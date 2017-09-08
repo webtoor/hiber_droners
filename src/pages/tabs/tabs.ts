@@ -13,7 +13,7 @@ export class TabsPage {
   tab1Root = TawaranPage;
   tab2Root = BerjalanPage;
   tab3Root = PerformaPage;
-  tab4Root = AkunPage;
+  //tab4Root = AkunPage;
 
   constructor() {
 
