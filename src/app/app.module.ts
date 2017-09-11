@@ -9,6 +9,10 @@ import { TawaranPage } from '../pages/tawaran/tawaran';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AkunPage } from '../pages/akun/akun';
 import { BantuanPage } from '../pages/bantuan/bantuan';
+import { RegisterPage } from '../pages/register/register';
+import { LoginPage } from '../pages/login/login';
+
+
 
 
 
@@ -26,7 +30,9 @@ import { HttpModule } from "@angular/http";
     TawaranPage,
     TabsPage,
     AkunPage,
-    BantuanPage
+    BantuanPage,
+    RegisterPage,
+     LoginPage
   ],
   imports: [
     BrowserModule, HttpModule,
@@ -40,7 +46,9 @@ import { HttpModule } from "@angular/http";
     TawaranPage,
     TabsPage,
     AkunPage,
-    BantuanPage
+    BantuanPage,
+    RegisterPage,
+     LoginPage
 
   ],
   providers: [

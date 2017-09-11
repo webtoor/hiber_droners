@@ -3,7 +3,7 @@ import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 //let apiUrl = "http://localhost/hiber/api/";
-let apiUrl = "http://localhost/hiber/api/pengguna.php";
+let apiUrl = "http://localhost/hiber/api/penyedia.php/";
 /*
   Generated class for the AuthServiceProvider provider.
 

@@ -4,6 +4,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AkunPage } from '../pages/akun/akun';
 import { BantuanPage } from '../pages/bantuan/bantuan';
+import { RegisterPage } from '../pages/register/register';
+
 
 
 import { TabsPage } from '../pages/tabs/tabs';
@@ -14,7 +16,7 @@ import { TabsPage } from '../pages/tabs/tabs';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage:any = TabsPage;
+  rootPage:any = RegisterPage;
   pages: Array<{title: string, icon: string,  component: any}>;
   petas: Array<{title: string, icon: string,  component: any}>;
 
