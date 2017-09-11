@@ -22,7 +22,9 @@ export class RegisterPage {
   penyediaData = {"username":"", "mPhone":"","email":"","password":""};
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public authService: AuthServiceProvider, public loadingCtrl: LoadingController, private toastCtrl: ToastController, public menu: MenuController) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public authService: AuthServiceProvider, public loadingCtrl: LoadingController, private toastCtrl: ToastController, public menu: MenuController) {
+    this.menu.swipeEnable(false);
+ }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad RegisterPage');

@@ -11,6 +11,8 @@ import { AkunPage } from '../pages/akun/akun';
 import { BantuanPage } from '../pages/bantuan/bantuan';
 import { RegisterPage } from '../pages/register/register';
 import { LoginPage } from '../pages/login/login';
+import { WelcomePage } from '../pages/welcome/welcome';
+
 
 
 
@@ -32,7 +34,8 @@ import { HttpModule } from "@angular/http";
     AkunPage,
     BantuanPage,
     RegisterPage,
-     LoginPage
+    LoginPage,
+    WelcomePage
   ],
   imports: [
     BrowserModule, HttpModule,
@@ -48,7 +51,8 @@ import { HttpModule } from "@angular/http";
     AkunPage,
     BantuanPage,
     RegisterPage,
-     LoginPage
+    LoginPage,
+    WelcomePage
 
   ],
   providers: [
