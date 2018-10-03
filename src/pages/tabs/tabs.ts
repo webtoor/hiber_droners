@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TawaranPage } from '../tawaran/tawaran';
 import { BerjalanPage } from '../berjalan/berjalan';
+import { PerformaPage } from '../performa/performa';
+
 
 /**
  * Generated class for the TabsPage page.
@@ -19,6 +21,7 @@ export class TabsPage {
 
   tab1Root = TawaranPage;
   tab2Root = BerjalanPage;
+  tab3Root = PerformaPage;
   
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

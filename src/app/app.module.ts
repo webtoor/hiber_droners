@@ -6,9 +6,9 @@ import { HiberDroners } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { TabsPage } from '../pages/tabs/tabs';
-
 import { TawaranPage } from '../pages/tawaran/tawaran';
 import { BerjalanPage } from '../pages/berjalan/berjalan';
+import { PerformaPage } from '../pages/performa/performa';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -19,6 +19,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TawaranPage,
     BerjalanPage,
     TabsPage,
+    PerformaPage,
     ListPage
   ],
   imports: [
@@ -32,6 +33,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TawaranPage,
     BerjalanPage,
     TabsPage,
+    PerformaPage,
     ListPage
   ],
   providers: [
