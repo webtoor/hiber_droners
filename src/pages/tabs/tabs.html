@@ -4,15 +4,16 @@
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
-
-  <ion-navbar>
-    <ion-title>tabs</ion-title>
+<ion-header no-border>
+  <ion-navbar color="primary">
+    <ion-title>HIBER</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
-<ion-content padding>
-
+<ion-content style="margin-top:-11px;">
+  <ion-tabs tabsPlacement="top" color="navy" tabsHighlight="true">
+    <ion-tab [root]="tab1Root" tabTitle="Tawaran" tabIcon="bookmark"></ion-tab>
+    <ion-tab [root]="tab2Root" tabTitle="Berjalan" tabIcon="book"></ion-tab>
+  </ion-tabs>
 </ion-content>
+

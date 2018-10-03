@@ -2,24 +2,24 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the TawaranPage page.
+ * Generated class for the PerformaPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
 
-/* @IonicPage() */
+@IonicPage()
 @Component({
-  selector: 'page-tawaran',
-  templateUrl: 'tawaran.html',
+  selector: 'page-performa',
+  templateUrl: 'performa.html',
 })
-export class TawaranPage {
+export class PerformaPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TawaranPage');
+    console.log('ionViewDidLoad PerformaPage');
   }
 
 }
