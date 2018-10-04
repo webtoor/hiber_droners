@@ -9,6 +9,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { TawaranPage } from '../pages/tawaran/tawaran';
 import { BerjalanPage } from '../pages/berjalan/berjalan';
 import { PerformaPage } from '../pages/performa/performa';
+import { AkunPage } from '../pages/akun/akun';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -20,6 +22,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     BerjalanPage,
     TabsPage,
     PerformaPage,
+    AkunPage,
     ListPage
   ],
   imports: [
@@ -34,6 +37,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     BerjalanPage,
     TabsPage,
     PerformaPage,
+    AkunPage,
     ListPage
   ],
   providers: [
