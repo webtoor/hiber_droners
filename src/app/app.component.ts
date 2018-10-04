@@ -7,6 +7,9 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AkunPage } from '../pages/akun/akun';
+import { HubungiPage } from '../pages/hubungi/hubungi';
+import { BantuanPage } from '../pages/bantuan/bantuan';
+
 
 
 @Component({
@@ -25,6 +28,8 @@ export class HiberDroners {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Akun', icon: 'contact', component: AkunPage },
+      { title: 'Hubungi kami', icon: 'mail', component: HubungiPage },
+      { title: 'Bantuan', icon: 'help-circle', component: BantuanPage }
     ];
 
   }

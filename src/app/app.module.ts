@@ -10,6 +10,9 @@ import { TawaranPage } from '../pages/tawaran/tawaran';
 import { BerjalanPage } from '../pages/berjalan/berjalan';
 import { PerformaPage } from '../pages/performa/performa';
 import { AkunPage } from '../pages/akun/akun';
+import { HubungiPage } from '../pages/hubungi/hubungi';
+import { BantuanPage } from '../pages/bantuan/bantuan';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -23,6 +26,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TabsPage,
     PerformaPage,
     AkunPage,
+    HubungiPage,
+    BantuanPage,
     ListPage
   ],
   imports: [
@@ -38,6 +43,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TabsPage,
     PerformaPage,
     AkunPage,
+    HubungiPage,
+    BantuanPage,
     ListPage
   ],
   providers: [
