@@ -7,6 +7,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AkunPage } from '../pages/akun/akun';
+import { LoginPage } from '../pages/login/login';
 import { HubungiPage } from '../pages/hubungi/hubungi';
 import { BantuanPage } from '../pages/bantuan/bantuan';
 
@@ -18,7 +19,7 @@ import { BantuanPage } from '../pages/bantuan/bantuan';
 export class HiberDroners {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = TabsPage;
+  rootPage: any = LoginPage;
 
   pages: Array<{title: string, icon:any, component: any}>;
 

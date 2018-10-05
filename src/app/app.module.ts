@@ -12,6 +12,7 @@ import { PerformaPage } from '../pages/performa/performa';
 import { AkunPage } from '../pages/akun/akun';
 import { HubungiPage } from '../pages/hubungi/hubungi';
 import { BantuanPage } from '../pages/bantuan/bantuan';
+import { LoginPage } from '../pages/login/login';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -28,6 +29,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AkunPage,
     HubungiPage,
     BantuanPage,
+    LoginPage,
     ListPage
   ],
   imports: [
@@ -45,6 +47,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AkunPage,
     HubungiPage,
     BantuanPage,
+    LoginPage,
     ListPage
   ],
   providers: [
