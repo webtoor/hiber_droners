@@ -19,16 +19,19 @@ export class LoginPage {
   responseData: any;
   loading: any;
   userData = { "email": "", "password": "" };
+
+  userProviders = { "email": "", "password": "" };
   constructor(public navCtrl: NavController, public navParams: NavParams, public authService: RestApiProvider, public menu: MenuController, private toastCtrl: ToastController, public loadingCtrl: LoadingController, public events: Events) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad LoginPage');
-  }
+  ionViewDidEnter() {
+    if(localStorage.getItem('userData')){
+      this.navCtrl.setRoot(TabsPage);
+    }  }
 
   login(){
-    if (this.userData.email && this.userData.password) {
-      this.authService.postData(this.userData, "login", "").then((result) => {
+    if (this.userProviders.email && this.userProviders.password) {
+      this.authService.postData(this.userProviders, "login", "").then((result) => {
         this.responseData = result;
         console.log(this.responseData);
         if (this.responseData["access_token"]) {

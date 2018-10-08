@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { MenuController,IonicPage, NavController, NavParams } from 'ionic-angular';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the AkunPage page.
@@ -14,12 +15,26 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'akun.html',
 })
 export class AkunPage {
+  public userDetails : any;
+  public responseData: any;
+  acces_token : any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController,) {
+    this.menu.swipeEnable(false);
+    const data = JSON.parse(localStorage.getItem('userData'));
+    this.userDetails = data;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AkunPage');
   }
+  backToWelcome(){
+    this.navCtrl.setRoot(LoginPage);
+   }
 
+  logout(){
+     //Api Token Logout
+     localStorage.clear();
+      setTimeout(()=> this.backToWelcome(), 1000);
+   }
 }
