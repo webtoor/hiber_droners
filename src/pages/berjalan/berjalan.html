@@ -5,6 +5,35 @@
   Ionic pages and navigation.
 -->
 
-<ion-content padding>
-
+<ion-content>
+  <ion-toolbar>
+      <ion-grid>
+          <ion-row justify-content-center align-items-center>
+            <ion-col>
+              <div text-right style="font-weight: bold">Ikuti</div>
+            </ion-col>
+            <ion-col>
+               <ion-toggle checked="false" style="margin-left:30px"></ion-toggle>
+              </ion-col>
+            <ion-col>
+              <div text-left style="font-weight: bold">Berjalan</div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+  </ion-toolbar>
 </ion-content>
+<ion-footer style="height:30px" color="white">
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <div text-center style="font-weight: bold"><ion-icon name="move"></ion-icon> Urut</div>
+      </ion-col>
+      <ion-col>
+        <div text-center style="font-weight: bold"><ion-icon name="search"></ion-icon> Cari</div>
+      </ion-col>
+      <ion-col>
+        <div text-center style="font-weight: bold"><ion-icon name="funnel"></ion-icon> Filter</div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer>

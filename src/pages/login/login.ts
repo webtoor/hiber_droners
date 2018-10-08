@@ -18,18 +18,18 @@ import { RestApiProvider } from '../../providers/rest-api/rest-api'
 export class LoginPage {
   responseData: any;
   loading: any;
-  userData = { "email": "", "password": "" };
-
   userProviders = { "email": "", "password": "" };
   constructor(public navCtrl: NavController, public navParams: NavParams, public authService: RestApiProvider, public menu: MenuController, private toastCtrl: ToastController, public loadingCtrl: LoadingController, public events: Events) {
+    this.menu.swipeEnable(false);
   }
 
   ionViewDidEnter() {
-    if(localStorage.getItem('userData')){
+    if(localStorage.getItem('userProviders')){
       this.navCtrl.setRoot(TabsPage);
     }  }
 
   login(){
+    console.log(this.userProviders)
     if (this.userProviders.email && this.userProviders.password) {
       this.authService.postData(this.userProviders, "login", "").then((result) => {
         this.responseData = result;
@@ -37,8 +37,7 @@ export class LoginPage {
         if (this.responseData["access_token"]) {
           this.showLoader();
           this.events.publish('email', this.responseData.email);
-
-          localStorage.setItem('userData', JSON.stringify(this.responseData));
+          localStorage.setItem('userProviders', JSON.stringify(this.responseData));
           this.loading.dismiss();
           this.navCtrl.setRoot(TabsPage);
         }
