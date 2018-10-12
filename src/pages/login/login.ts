@@ -18,7 +18,7 @@ import { RestApiProvider } from '../../providers/rest-api/rest-api'
 export class LoginPage {
   responseData: any;
   loading: any;
-  userProviders = { "email": "", "password": "", "user_role" : "" };
+  userProviders = { "email": "", "password": "" };
   constructor(public navCtrl: NavController, public navParams: NavParams, public authService: RestApiProvider, public menu: MenuController, private toastCtrl: ToastController, public loadingCtrl: LoadingController, public events: Events) {
     this.menu.swipeEnable(false);
   }
@@ -31,7 +31,7 @@ export class LoginPage {
   login(){
     console.log(this.userProviders)
     if (this.userProviders.email && this.userProviders.password) {
-      this.authService.postData(this.userProviders, "login", "").then((result) => {
+      this.authService.postData(this.userProviders, "login_provider", "").then((result) => {
         this.responseData = result;
         console.log(this.responseData);
         if (this.responseData["access_token"]) {

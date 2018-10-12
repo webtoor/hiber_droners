@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -17,11 +17,20 @@ export class HiberDroners {
   @ViewChild(Nav) nav: Nav;
 
   rootPage: any = LoginPage;
-
+  userDetails : any;
+  emails :any;
   pages: Array<{title: string, icon:any, component: any}>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public events: Events,  public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
+    this.userDetails = JSON.parse(localStorage.getItem('userHiber'));
+    if(this.userDetails){
+    this.emails = this.userDetails.email;
+    }
+    events.subscribe('email', (email) => {
+      this.emails = email;
+      //console.log(email);
+    });
 
     // used for an example of ngFor and navigation
     this.pages = [
