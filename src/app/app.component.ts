@@ -23,7 +23,7 @@ export class HiberDroners {
 
   constructor(public platform: Platform, public events: Events,  public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
-    this.userDetails = JSON.parse(localStorage.getItem('userHiber'));
+    this.userDetails = JSON.parse(localStorage.getItem('userProviders'));
     if(this.userDetails){
     this.emails = this.userDetails.email;
     }
