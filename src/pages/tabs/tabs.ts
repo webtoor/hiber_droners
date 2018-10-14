@@ -3,6 +3,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TawaranPage } from '../tawaran/tawaran';
 import { BerjalanPage } from '../berjalan/berjalan';
 import { PerformaPage } from '../performa/performa';
+import { LoginPage } from '../login/login';
+
 
 
 /**
@@ -26,6 +28,11 @@ export class TabsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
+  ionViewDidEnter() {
+    if(!localStorage.getItem('userProviders')){
+      this.navCtrl.setRoot(LoginPage);
+    }  
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad TabsPage');
   }

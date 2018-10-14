@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { TabsPage } from '../pages/tabs/tabs';
 
 import { AkunPage } from '../pages/akun/akun';
 import { LoginPage } from '../pages/login/login';
@@ -16,7 +17,7 @@ import { BantuanPage } from '../pages/bantuan/bantuan';
 export class HiberDroners {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LoginPage;
+  rootPage: any = TabsPage;
   userDetails : any;
   emails :any;
   pages: Array<{title: string, icon:any, component: any}>;

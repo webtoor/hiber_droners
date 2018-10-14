@@ -24,9 +24,8 @@ export class LoginPage {
   }
 
   ionViewDidEnter() {
-    if(localStorage.getItem('userProviders')){
-      this.navCtrl.setRoot(TabsPage);
-    }  }
+  
+  }
 
   login(){
     console.log(this.userProviders)
