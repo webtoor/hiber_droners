@@ -29,7 +29,7 @@ export class TabsPage {
   }
 
   ionViewDidEnter() {
-    if(!localStorage.getItem('userProviders')){
+    if(!localStorage.getItem('userProvider')){
       this.navCtrl.setRoot(LoginPage);
     }  
   }

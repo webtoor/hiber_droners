@@ -36,7 +36,7 @@ export class LoginPage {
         if (this.responseData["access_token"]) {
           this.showLoader();
           this.events.publish('email', this.responseData.email);
-          localStorage.setItem('userProviders', JSON.stringify(this.responseData));
+          localStorage.setItem('userProvider', JSON.stringify(this.responseData));
           this.loading.dismiss();
           this.navCtrl.setRoot(TabsPage);
         }

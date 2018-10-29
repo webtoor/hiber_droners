@@ -6,13 +6,15 @@
 -->
 
 <ion-content>
+    <div *ngIf="items != 0;else kosong" >
+      <div *ngFor="let item of items">
       <ion-card >
       <ion-card-content>
-     <div style="font-weight:bold; margin-bottom:20px;">Liburan Keluarga</div>
-      <div> Dibuat  : 10 Dec 2018</div>
+     <div style="font-weight:bold; margin-bottom:20px;">{{item.subject}}</div>
+      <div> Dibuat  : {{item.created_at | date: "dd-MMM-yyyy HH:mm a"}} - Oleh {{item.user_client.username}}</div>
       <div>Pemetaan Tanaman</div>
       <div>Liburan</div>
-      <div>Tanggal Proyek: 20 Feb 2019- 25 Feb 2019</div>
+      <div>Tanggal Proyek : {{item.dtprojectstart | date: "dd MMM yyyy" }} - {{item.dtprojectend | date: "dd MMM yyyy" }}</div>
       <ion-grid>
         <ion-row style="margin-left: -15px; margin-right: -15px">
           <ion-col>
@@ -25,6 +27,8 @@
       </ion-grid>
     </ion-card-content>
     </ion-card>
+    </div>
+    </div>
 </ion-content>
 <ion-footer style="height:35px" color="white">
   <ion-grid style="margin-top:-9px">

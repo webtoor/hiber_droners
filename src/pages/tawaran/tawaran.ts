@@ -21,13 +21,18 @@ export class TawaranPage {
   public items : any;
   loading:any
   constructor(public loadingCtrl: LoadingController, public app: App, public navCtrl: NavController, public navParams: NavParams, public authService: RestApiProvider) {
+    const data = JSON.parse(localStorage.getItem('userProvider'));
+    this.userDetails = data;
+    console.log(this.userDetails)
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TawaranPage');
+    this.getTawaran();
   }
 
   getTawaran(){
+    this.showLoader()
     this.authService.getData('api/provider/tawaran_show/', this.userDetails['access_token']).then((result)=>{
       this.responseData = result;
       console.log(this.responseData);
