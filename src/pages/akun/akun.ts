@@ -21,7 +21,7 @@ export class AkunPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController,) {
     this.menu.swipeEnable(false);
-    this.userDetails  = JSON.parse(localStorage.getItem('userProviders'));
+    this.userDetails  = JSON.parse(localStorage.getItem('userProvider'));
   }
 
   ionViewDidLoad() {

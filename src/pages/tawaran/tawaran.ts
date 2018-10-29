@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, App, LoadingController } from 'ionic-angular';
-import { RestApiProvider } from '../../providers/rest-api/rest-api'
-import { LoginPage } from '../login/login'
+import {  NavController, NavParams, App, LoadingController } from 'ionic-angular';
+import { RestApiProvider } from '../../providers/rest-api/rest-api';
+import { LoginPage } from '../login/login';
+import { DetailTawaranPage } from '../detail-tawaran/detail-tawaran';
+
 
 /**
  * Generated class for the TawaranPage page.
@@ -31,9 +33,18 @@ export class TawaranPage {
     this.getTawaran();
   }
 
+  detail(id:any, subject:any){
+    console.log(id)
+    let nav = this.app.getRootNav();
+    nav.push(DetailTawaranPage, {
+    id : id,
+    subject : subject
+    });
+  }
+
   getTawaran(){
     this.showLoader()
-    this.authService.getData('api/provider/tawaran_show/', this.userDetails['access_token']).then((result)=>{
+    this.authService.getData('api/provider/tawaran_show', this.userDetails['access_token']).then((result)=>{
       this.responseData = result;
       console.log(this.responseData);
       if(this.responseData['success'] == true){

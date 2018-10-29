@@ -12,6 +12,8 @@ import { AkunPage } from '../pages/akun/akun';
 import { HubungiPage } from '../pages/hubungi/hubungi';
 import { BantuanPage } from '../pages/bantuan/bantuan';
 import { LoginPage } from '../pages/login/login';
+import { DetailTawaranPage } from '../pages/detail-tawaran/detail-tawaran';
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestApiProvider } from '../providers/rest-api/rest-api';
@@ -30,7 +32,8 @@ import { HttpModule } from "@angular/http";
     HubungiPage,
     BantuanPage,
     LoginPage,
-    ListPage
+    ListPage,
+    DetailTawaranPage
   ],
   imports: [
     BrowserModule,HttpModule,
@@ -48,7 +51,8 @@ import { HttpModule } from "@angular/http";
     HubungiPage,
     BantuanPage,
     LoginPage,
-    ListPage
+    ListPage,
+    DetailTawaranPage
   ],
   providers: [
     StatusBar,
