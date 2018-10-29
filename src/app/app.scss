@@ -35,7 +35,12 @@
 .scroll-content {
     overflow-y : auto  ! important ;
   }
-
+  body {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+    }
 @font-face{
     font-family: Righteous;
     src: url('../assets/fonts/Righteous.woff2') format('woff2');

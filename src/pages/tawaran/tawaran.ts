@@ -25,7 +25,7 @@ export class TawaranPage {
   constructor(public loadingCtrl: LoadingController, public app: App, public navCtrl: NavController, public navParams: NavParams, public authService: RestApiProvider) {
     const data = JSON.parse(localStorage.getItem('userProvider'));
     this.userDetails = data;
-    console.log(this.userDetails)
+    //console.log(this.userDetails)
   }
 
   ionViewDidLoad() {

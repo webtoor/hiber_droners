@@ -23,6 +23,7 @@ export class DetailTawaranPage {
   subject:any;
   order_id:any;
   map:any;
+  outputs:any;
   @ViewChild('map') mapElement: ElementRef;
   constructor(public authService: RestApiProvider, public loadingCtrl: LoadingController, public app: App,public navCtrl: NavController, public navParams: NavParams) {
     this.subject= navParams.get('subject');
@@ -42,7 +43,7 @@ export class DetailTawaranPage {
       this.responseData = result;
       console.log(this.responseData);
       if(this.responseData['success'] == true){
-        this.items = this.responseData['data'];
+        this.items = this.responseData['polygon'];
           
     let LatLng = new google.maps.LatLng(this.responseData['polygon'][0]['latitude'], this.responseData['polygon'][0]['longitude']);
 
@@ -71,6 +72,20 @@ export class DetailTawaranPage {
          });
          this.map.getBounds(cords);
          cords = [];
+
+         this.outputs = []
+         for(var j=0; j < this.responseData['output'].length; j++){
+          if(this.responseData['output'][j]['output_id'] == '1'){
+            this.outputs.push('Video')
+          }else if(this.responseData['output'][j]['output_id'] == '2'){
+            this.outputs.push ('Foto')
+          }else if(this.responseData['output'][j]['output_id'] == '3'){
+            this.outputs.push('Peta')
+          }else if(this.responseData['output'][j]['output_id'] == '4'){
+            this.outputs.push('Lain-lain')
+          }
+         }
+         console.log(this.outputs)
         this.loading.dismiss()
       }else{
         this.loading.dismiss()

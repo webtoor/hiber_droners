@@ -10,7 +10,7 @@
       <div *ngFor="let item of items">
       <ion-card >
       <ion-card-content>
-     <div style="font-weight:bold; margin-bottom:20px;">{{item.subject}}</div>
+     <div style="font-weight:bold; margin-bottom:20px;" >{{item.subject}}</div>
       <div> Dibuat  : {{item.created_at | date: "dd MMM yyyy HH:mm a"}} - Oleh {{item.user_client.username}}</div>
       <div *ngIf="item.projecttype == 1">Pemetaan Tanaman</div>
       <div *ngIf="item.projecttype == 2">Liburan</div>
