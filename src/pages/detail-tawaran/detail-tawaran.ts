@@ -26,17 +26,19 @@ export class DetailTawaranPage {
   @ViewChild('map') mapElement: ElementRef;
   constructor(public authService: RestApiProvider, public loadingCtrl: LoadingController, public app: App,public navCtrl: NavController, public navParams: NavParams) {
     this.subject= navParams.get('subject');
-    this.order_id= navParams.get('order_id');
-
+    this.order_id= navParams.get('id');
+    const data = JSON.parse(localStorage.getItem('userProvider'));
+    this.userDetails = data;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DetailTawaranPage');
+    this.getDetailTawaran();
   }
 
   getDetailTawaran(){
     this.showLoader()
-    this.authService.getData('api/provider/detail_show/' + this.subject, this.userDetails['access_token']).then((result)=>{
+    this.authService.getData('api/provider/detail_show/' + this.order_id, this.userDetails['access_token']).then((result)=>{
       this.responseData = result;
       console.log(this.responseData);
       if(this.responseData['success'] == true){
