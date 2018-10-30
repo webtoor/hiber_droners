@@ -17,7 +17,7 @@ import { LoginPage } from '../login/login';
 export class IkutiPage {
   subject:any;
   order_id:any;
-  dataBidding = { "order_id" : "", "harga" : "", "proposal_by" : "", "comment" : "" };
+  dataBidding = { "order_id" : "", "offered_price" : "", "proposal_by" : "", "comment" : "" };
   public userDetails : any;
   public responseData: any;
   public items : any;
@@ -44,8 +44,8 @@ export class IkutiPage {
     this.dataBidding.order_id = order_id;
     this.dataBidding.proposal_by = this.userDetails['id']
     console.log(this.dataBidding)
-    if (this.dataBidding.comment && this.dataBidding.harga) {
-      this.authService.postData(this.dataBidding, "/api/provider/bidding",  this.userDetails['access_token']).then((result) => {
+    if (this.dataBidding.comment && this.dataBidding.offered_price) {
+      this.authService.postData(this.dataBidding, "api/provider/bidding",  this.userDetails['access_token']).then((result) => {
         this.responseData = result;
         console.log(this.responseData);
         if (this.responseData["success"] == true) {
