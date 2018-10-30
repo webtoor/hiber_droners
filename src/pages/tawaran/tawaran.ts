@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {  NavController, NavParams, App, LoadingController } from 'ionic-angular';
+import { ModalController, NavController, NavParams, App, LoadingController } from 'ionic-angular';
 import { RestApiProvider } from '../../providers/rest-api/rest-api';
 import { LoginPage } from '../login/login';
 import { DetailTawaranPage } from '../detail-tawaran/detail-tawaran';
@@ -22,7 +22,7 @@ export class TawaranPage {
   public responseData: any;
   public items : any;
   loading:any
-  constructor(public loadingCtrl: LoadingController, public app: App, public navCtrl: NavController, public navParams: NavParams, public authService: RestApiProvider) {
+  constructor(public modalCtrl: ModalController, public loadingCtrl: LoadingController, public app: App, public navCtrl: NavController, public navParams: NavParams, public authService: RestApiProvider) {
     const data = JSON.parse(localStorage.getItem('userProvider'));
     this.userDetails = data;
     //console.log(this.userDetails)
