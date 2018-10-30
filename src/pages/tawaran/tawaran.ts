@@ -3,6 +3,7 @@ import { ModalController, NavController, NavParams, App, LoadingController } fro
 import { RestApiProvider } from '../../providers/rest-api/rest-api';
 import { LoginPage } from '../login/login';
 import { DetailTawaranPage } from '../detail-tawaran/detail-tawaran';
+import { IkutiPage } from '../ikuti/ikuti';
 
 
 /**
@@ -21,7 +22,7 @@ export class TawaranPage {
   public userDetails : any;
   public responseData: any;
   public items : any;
-  loading:any
+  loading:any;
   constructor(public modalCtrl: ModalController, public loadingCtrl: LoadingController, public app: App, public navCtrl: NavController, public navParams: NavParams, public authService: RestApiProvider) {
     const data = JSON.parse(localStorage.getItem('userProvider'));
     this.userDetails = data;
@@ -72,5 +73,13 @@ export class TawaranPage {
     });
 
     this.loading.present();
+  }
+
+  ikutiModal(id:any, subject:any) {
+    let modal = this.modalCtrl.create(IkutiPage, { order_id: id, subject:subject }, {cssClass: 'select-modal' });
+    modal.onDidDismiss(data => {
+    
+    })
+    modal.present();
   }
 }

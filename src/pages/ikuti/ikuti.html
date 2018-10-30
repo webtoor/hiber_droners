@@ -6,13 +6,23 @@
 -->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Ikuti</ion-title>
+  <ion-navbar color="navy">
+  <ion-title text-center>{{subject}}</ion-title>
+  <ion-buttons start>
+    <button ion-button color="white" (click)="dismiss()">
+      <ion-icon name="md-close"></ion-icon>
+    </button>
+  </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
-
-<ion-content padding>
-
+<ion-content>
+    <ion-item>
+        <ion-label color="navy" floating>Penawaran Harga</ion-label>
+        <ion-input type="number"></ion-input>
+      </ion-item>   
+      <div text-center style="margin-top:40px">
+          <button ion-button round text-center color="navy" (click)="bidding(order_id)" style="height:40px; width:200px;">Submit</button>
+          </div> 
 </ion-content>

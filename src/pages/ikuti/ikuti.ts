@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { ViewController, NavController, NavParams } from 'ionic-angular';
+import { RestApiProvider } from '../../providers/rest-api/rest-api';
 
 /**
  * Generated class for the IkutiPage page.
@@ -14,12 +15,23 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'ikuti.html',
 })
 export class IkutiPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  subject:any;
+  order_id:any;
+  constructor(public authService: RestApiProvider, public viewCtrl: ViewController,public navCtrl: NavController, public navParams: NavParams) {
+    this.subject= navParams.get('subject');
+    this.order_id= navParams.get('order_id');
+    console.log(this.order_id)
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad IkutiPage');
   }
 
+  dismiss(){
+    this.viewCtrl.dismiss();
+  }
+
+  bidding(order_id){
+    console.log(order_id)
+  }
 }
