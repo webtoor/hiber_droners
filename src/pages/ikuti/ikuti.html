@@ -20,8 +20,12 @@
 <ion-content>
     <ion-item>
         <ion-label color="navy" floating>Penawaran Harga</ion-label>
-        <ion-input type="number"></ion-input>
+        <ion-input type="number" clearInput [(ngModel)]="dataBidding.harga" ></ion-input>
       </ion-item>   
+      <ion-item>
+          <ion-label color="navy" floating>Komentar</ion-label>
+          <ion-textarea [(ngModel)]="dataBidding.comment"></ion-textarea>
+        </ion-item>
       <div text-center style="margin-top:40px">
           <button ion-button round text-center color="navy" (click)="bidding(order_id)" style="height:40px; width:200px;">Submit</button>
           </div> 
