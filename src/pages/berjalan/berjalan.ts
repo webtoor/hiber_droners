@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, App } from 'ionic-angular';
+import { RestApiProvider } from '../../providers/rest-api/rest-api';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the BerjalanPage page.
@@ -14,12 +16,48 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'berjalan.html',
 })
 export class BerjalanPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public userDetails : any;
+  public responseData: any;
+  public items : any;
+  loading:any;
+  constructor(public app: App ,public loadingCtrl: LoadingController,public authService: RestApiProvider, public navCtrl: NavController, public navParams: NavParams) {
+    const data = JSON.parse(localStorage.getItem('userProvider'));
+    this.userDetails = data;
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BerjalanPage');
   }
 
+  getBerjalanIkuti(){
+    this.showLoader()
+    this.authService.getData('api/provider/berjalan_ikuti_show/' + this.userDetails['id'] , this.userDetails['access_token']).then((result)=>{
+      this.responseData = result;
+      console.log(this.responseData);
+      if(this.responseData['success'] == true){
+        this.items = this.responseData['data'];
+        this.loading.dismiss()
+      }else{
+        this.loading.dismiss()
+        localStorage.clear();
+        setTimeout(()=> this.backToWelcome(), 1000);  
+      }
+    }, (err) => {
+      this.loading.dismiss()
+    });
+  }
+
+  backToWelcome(){
+    let nav = this.app.getRootNav();
+    nav.setRoot(LoginPage);
+   }
+
+   showLoader() {
+    this.loading = this.loadingCtrl.create({
+      spinner: 'ios',
+      content: 'Loading..',
+    });
+
+    this.loading.present();
+  }
 }
