@@ -20,6 +20,7 @@ export class BerjalanPage {
   public responseData: any;
   public items : any;
   loading:any;
+  public theState:boolean = false;
   constructor(public app: App ,public loadingCtrl: LoadingController,public authService: RestApiProvider, public navCtrl: NavController, public navParams: NavParams) {
     const data = JSON.parse(localStorage.getItem('userProvider'));
     this.userDetails = data;
@@ -28,6 +29,10 @@ export class BerjalanPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad BerjalanPage');
     this.getBerjalanIkuti();
+  }
+
+  change(){
+    console.log(this.theState)
   }
 
   getBerjalanIkuti(){
