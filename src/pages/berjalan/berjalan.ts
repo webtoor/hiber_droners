@@ -27,6 +27,7 @@ export class BerjalanPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BerjalanPage');
+    this.getBerjalanIkuti();
   }
 
   getBerjalanIkuti(){
