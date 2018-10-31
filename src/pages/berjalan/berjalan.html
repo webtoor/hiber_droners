@@ -21,7 +21,8 @@
           </ion-row>
         </ion-grid>
   </ion-toolbar>
-    <div *ngIf="items != 0;else kosong" >
+  <div *ngIf="theState == false">
+    <div *ngIf="items != 0;" >
       <div *ngFor="let item of items">
       <ion-card >
       <ion-card-content>
@@ -47,6 +48,37 @@
     </ion-card-content>
     </ion-card>
     </div>
+    </div>
+  </div>
+
+  <div *ngIf="theState == true">
+      <div *ngIf="items != 0;" >
+        <div *ngFor="let item of items">
+        <ion-card >
+        <ion-card-content>
+       <div style="font-weight:bold; margin-bottom:20px;" >{{item.order.subject}}</div>
+        <div> Dibuat  : {{item.order.created_at | date: "dd MMM yyyy HH:mm a"}} - Oleh {{item.order.user_client.username}} </div>
+        <div *ngIf="item.order.projecttype == 1">Pemetaan Tanaman</div>
+        <div *ngIf="item.order.projecttype == 2">Liburan</div>
+        <div *ngIf="item.order.projecttype == 3">Lalu-lintas</div>
+        <div *ngIf="item.order.projecttype == 4">Konstruksi Bangunan</div>
+        <div *ngIf="item.order.projecttype == 5">Pengawasan</div>
+        <div>Tanggal Proyek : {{item.order.dtprojectstart | date: "dd MMM yyyy" }} - {{item.order.dtprojectend | date: "dd MMM yyyy" }}</div>
+        <div>Harga Penawaran IDR : {{item.proposal_by.offered_price  | currency:"Rp." :true:"1.0"}}</div>
+  
+        <ion-grid>
+          <ion-row style="margin-left: -15px; margin-right: -15px">
+            <ion-col>
+              <button ion-button small block color="navy" style="color:orange" >Detail</button>
+            </ion-col>
+            <ion-col>
+              </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+      </ion-card>
+      </div>
+      </div>
     </div>
 </ion-content>
 <ion-footer style="height:35px" color="white">

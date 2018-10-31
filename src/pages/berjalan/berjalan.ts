@@ -32,6 +32,13 @@ export class BerjalanPage {
   }
 
   change(){
+    if(this.theState == false){
+      this.getBerjalanIkuti();
+    }else if(this.theState == true){
+      this.getBerjalanKerja();
+    }else{
+      this.getBerjalanIkuti();
+    }
     console.log(this.theState)
   }
 
@@ -45,7 +52,25 @@ export class BerjalanPage {
         this.loading.dismiss()
       }else{
         this.loading.dismiss()
-        localStorage.clear();
+        //localStorage.clear();
+        setTimeout(()=> this.backToWelcome(), 1000);  
+      }
+    }, (err) => {
+      this.loading.dismiss()
+    });
+  }
+
+  getBerjalanKerja(){
+    this.showLoader()
+    this.authService.getData('api/provider/berjalan_kerja_show/' + this.userDetails['id'] , this.userDetails['access_token']).then((result)=>{
+      this.responseData = result;
+      console.log(this.responseData);
+      if(this.responseData['success'] == true){
+        this.items = this.responseData['data'];
+        this.loading.dismiss()
+      }else{
+        this.loading.dismiss()
+        //localStorage.clear();
         setTimeout(()=> this.backToWelcome(), 1000);  
       }
     }, (err) => {
