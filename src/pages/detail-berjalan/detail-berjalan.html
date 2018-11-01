@@ -5,14 +5,19 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>detail-berjalan</ion-title>
+  <ion-navbar color="navy">
+    <ion-title>{{subject}}</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
-<ion-content padding>
-
+<ion-content>
+    <div #map id="map">
+        <ion-spinner name="ios"></ion-spinner>
+      </div>
 </ion-content>
+<ion-footer>
+    <ion-toolbar color="white">
+     <div style="font-weight: bold">- Hasil : {{outputs}}</div> 
+     <div *ngFor="let item of items" style="font-weight: bold">- Latitude & Longitude : {{item.latitude}}, {{item.longitude}} </div> 
+  </ion-toolbar>
+  </ion-footer>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, App } from 'ionic-angular';
 import { RestApiProvider } from '../../providers/rest-api/rest-api';
 import { LoginPage } from '../login/login';
+import { DetailBerjalanPage } from '../detail-berjalan/detail-berjalan';
 
 /**
  * Generated class for the BerjalanPage page.
@@ -79,7 +80,12 @@ export class BerjalanPage {
   }
 
   detail(id:any, subject:any){
-    console.log(id + subject)
+    console.log(id)
+    let nav = this.app.getRootNav();
+    nav.push(DetailBerjalanPage, {
+    id : id,
+    subject : subject
+    });
   }
 
   backToWelcome(){
