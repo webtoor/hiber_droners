@@ -53,7 +53,7 @@ export class BerjalanPage {
         this.loading.dismiss()
       }else{
         this.loading.dismiss()
-        //localStorage.clear();
+        localStorage.clear();
         setTimeout(()=> this.backToWelcome(), 1000);  
       }
     }, (err) => {
@@ -71,7 +71,7 @@ export class BerjalanPage {
         this.loading.dismiss()
       }else{
         this.loading.dismiss()
-        //localStorage.clear();
+        localStorage.clear();
         setTimeout(()=> this.backToWelcome(), 1000);  
       }
     }, (err) => {

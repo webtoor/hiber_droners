@@ -22,7 +22,7 @@
         </ion-grid>
   </ion-toolbar>
   <div *ngIf="theState == false">
-    <div *ngIf="items != 0;" >
+    <div *ngIf="items != 0; else kosong" >
       <div *ngFor="let item of items">
       <ion-card >
       <ion-card-content>
@@ -49,10 +49,17 @@
     </ion-card>
     </div>
     </div>
+    <ng-template #kosong>
+      <ion-card>
+          <ion-card-content>
+            <p text-center style="font-weight:bold">Belum Ada Project yang diikuti</p>
+          </ion-card-content>
+    </ion-card>
+    </ng-template>
   </div>
-
+  
   <div *ngIf="theState == true">
-      <div *ngIf="items != 0;" >
+      <div *ngIf="items != 0; else kosongs" >
         <div *ngFor="let item of items">
         <ion-card >
         <ion-card-content>
@@ -79,7 +86,16 @@
       </ion-card>
       </div>
       </div>
+      <ng-template #kosongs>
+        <ion-card>
+            <ion-card-content>
+              <p text-center style="font-weight:bold">Belum Ada Project Berjalan</p>
+            </ion-card-content>
+      </ion-card>
+      </ng-template>
     </div>
+
+    
 </ion-content>
 <ion-footer style="height:35px" color="white">
   <ion-grid style="margin-top:-9px">
