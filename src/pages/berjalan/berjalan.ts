@@ -78,6 +78,10 @@ export class BerjalanPage {
     });
   }
 
+  detail(id:any, subject:any){
+    console.log(id + subject)
+  }
+
   backToWelcome(){
     let nav = this.app.getRootNav();
     nav.setRoot(LoginPage);

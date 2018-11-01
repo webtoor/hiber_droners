@@ -14,6 +14,7 @@ import { BantuanPage } from '../pages/bantuan/bantuan';
 import { LoginPage } from '../pages/login/login';
 import { DetailTawaranPage } from '../pages/detail-tawaran/detail-tawaran';
 import { IkutiPage } from '../pages/ikuti/ikuti';
+import { DetailBerjalanPage } from '../pages/detail-berjalan/detail-berjalan';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -36,7 +37,8 @@ import { HttpModule } from "@angular/http";
     LoginPage,
     ListPage,
     DetailTawaranPage,
-    IkutiPage
+    IkutiPage,
+    DetailBerjalanPage
   ],
   imports: [
     BrowserModule,HttpModule,
@@ -56,7 +58,8 @@ import { HttpModule } from "@angular/http";
     LoginPage,
     ListPage,
     DetailTawaranPage,
-    IkutiPage
+    IkutiPage,
+    DetailBerjalanPage
   ],
   providers: [
     StatusBar,
