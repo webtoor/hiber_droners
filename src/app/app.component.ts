@@ -21,7 +21,7 @@ export class HiberDroners {
   userDetails : any;
   emails :any;
   pages: Array<{title: string, icon:any, component: any}>;
-
+  rate = 4;
   constructor(public platform: Platform, public events: Events,  public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
     this.userDetails = JSON.parse(localStorage.getItem('userProvider'));
