@@ -47,7 +47,7 @@ export class TabsPage {
       this.responseData = result;
       console.log(this.responseData);
       if(this.responseData['success'] == true){
-        this.events.publish('rating', this.responseData['data']['total_rating']);
+        this.events.publish('rate', this.responseData['data']['total_rating']);
       }else{
        console.log('error')
       }

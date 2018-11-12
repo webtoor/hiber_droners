@@ -20,7 +20,7 @@ export class HiberDroners {
   userDetails : any;
   emails :any;
   pages: Array<{title: string, icon:any, component: any}>;
-  rate = 4.6
+  rate :string;
   constructor(public platform: Platform, public events: Events,  public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
     this.userDetails = JSON.parse(localStorage.getItem('userProvider'));
@@ -30,6 +30,16 @@ export class HiberDroners {
     events.subscribe('email', (email) => {
       this.emails = email;
       //console.log(this.emails);
+    });
+
+    events.subscribe('rate', (rate) => {
+      if(rate == parseFloat(rate)){
+      parseFloat(rate)
+      this.rate = rate + '.0'
+    }
+      this.rate = rate 
+      /* var test = parseFloat(rate)
+      console.log(test); */
     });
 
     // used for an example of ngFor and navigation

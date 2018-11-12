@@ -2,9 +2,9 @@
   <ion-content>
       <div id="menu">
           <img src="assets/imgs/menu.png" class="logo"/>
-          <div class="ratings-value">4.6</div>
-          <div class="ratings">  
-             <rating [(ngModel)]="rate" 
+          <div *ngIf="rate" class="ratings-value">{{rate}}</div>
+          <div *ngIf="rate" class="ratings">  
+            <rating [(ngModel)]="rate" 
             readOnly="true"
             max="5"
             emptyStarIconName="star-outline"
