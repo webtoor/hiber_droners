@@ -5,7 +5,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
 
 import { AkunPage } from '../pages/akun/akun';
-import { LoginPage } from '../pages/login/login';
 import { HubungiPage } from '../pages/hubungi/hubungi';
 import { BantuanPage } from '../pages/bantuan/bantuan';
 
@@ -30,7 +29,7 @@ export class HiberDroners {
     }
     events.subscribe('email', (email) => {
       this.emails = email;
-      //console.log(email);
+      //console.log(this.emails);
     });
 
     // used for an example of ngFor and navigation

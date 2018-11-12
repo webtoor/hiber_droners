@@ -13,7 +13,7 @@
             nullable="false">
             </rating>
         </div>
-         <div class="email">droner@email.com</div>
+         <div *ngIf="emails" class="email">{{emails}}</div>
         </div>
         <br/>
     <ion-list>
