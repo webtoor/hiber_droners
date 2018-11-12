@@ -22,7 +22,8 @@
     color : white;
     font-size: 15px;
     font-weight: bold;
-    margin-top: 20px;
+    position: relative;
+    bottom:47px;
     margin-left: 20px;
   }
   .logo{
@@ -35,22 +36,35 @@
 .scroll-content {
     overflow-y : auto  ! important ;
   }
-  body {
+
+body {
     -webkit-user-select: text;
     -moz-user-select: text;
     -ms-user-select: text;
     user-select: text;
-    }
-
-    .rating li {
-      padding: 5px 10px !important;
-      background: none;
-      color: #ffb400;
-
-      ion-icon {
-        font-size: 20px;
-      }
-    }
+}
+.ratings {
+  text-align: right;
+  position:relative;
+  top: -72px;
+  margin-right: 45px
+}
+.ratings-value {
+  text-align: left;
+  position:relative;
+  top: -40px;
+  margin-left: 100px;
+  color:white;
+  font-weight: bold;
+}
+.rating li {
+  padding: 1px 4px !important;
+  background: none;
+  color: #ffb400;
+  ion-icon {
+    font-size: 20px;
+  }
+}
 @font-face{
     font-family: Righteous;
     src: url('../assets/fonts/Righteous.woff2') format('woff2');
