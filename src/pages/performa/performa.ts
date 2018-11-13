@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, App  } from 'ionic-angular';
 import { RestApiProvider } from '../../providers/rest-api/rest-api';
 import { LoginPage } from '../login/login';
+import { ThrowStmt } from '@angular/compiler';
 
 /**
  * Generated class for the PerformaPage page.

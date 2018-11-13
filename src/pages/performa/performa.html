@@ -5,6 +5,49 @@
   Ionic pages and navigation.
 -->
 
-<ion-content padding>
-
+<ion-content>
+  <div *ngIf="items != 0;else kosong" >
+    <div *ngFor="let item of items">
+    <ion-card >
+    <ion-card-content>
+    <ion-grid>
+        <ion-row style="margin-left:-10px;">
+          <ion-col>
+              <div style="font-weight:bold; margin-bottom: -10px" >{{item.order.subject}}</div>
+            </ion-col>
+            <ion-col>
+            </ion-col>
+          <ion-col text-right style="padding:0px">
+            <div class="ratingss">
+              <rating
+              readOnly="true"
+              max="{{item.rating}}"
+              emptyStarIconName="star"
+              halfStarIconName="star-half"
+              starIconName="star"
+              nullable="false">
+              </rating>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+          
+    <div> Dibuat  : {{item.order.created_at | date: "dd MMM yyyy HH:mm a"}} - Oleh {{item.client.username}}</div>
+    <div *ngIf="item.order.projecttype == 1">Pemetaan Tanaman</div>
+    <div *ngIf="item.order.projecttype == 2">Liburan</div>
+    <div *ngIf="item.order.projecttype == 3">Lalu-lintas</div>
+    <div *ngIf="item.order.projecttype == 4">Konstruksi Bangunan</div>
+    <div *ngIf="item.order.projecttype == 5">Pengawasan</div>
+    <div>Tanggal Proyek : {{item.order.dtprojectstart | date: "dd MMM yyyy" }} - {{item.order.dtprojectend | date: "dd MMM yyyy" }}</div>
+  </ion-card-content>
+  </ion-card>
+  </div>
+  </div>
+  <ng-template #kosong>
+    <ion-card>
+        <ion-card-content>
+          <p text-center style="font-weight:bold">Belum Ada Performa</p>
+        </ion-card-content>
+</ion-card>
+  </ng-template>
 </ion-content>
