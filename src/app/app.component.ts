@@ -33,13 +33,12 @@ export class HiberDroners {
     });
 
     events.subscribe('rate', (rate) => {
-      if(rate == parseFloat(rate)){
-      parseFloat(rate)
+      console.log(rate)
+    if(rate == parseInt(rate)){
       this.rate = rate + '.0'
-    }
+    }else{
       this.rate = rate 
-      /* var test = parseFloat(rate)
-      console.log(test); */
+    }
     });
 
     // used for an example of ngFor and navigation

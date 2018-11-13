@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import {  NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController  } from 'ionic-angular';
+import { RestApiProvider } from '../../providers/rest-api/rest-api';
 
 /**
  * Generated class for the PerformaPage page.
@@ -15,7 +16,7 @@ import {  NavController, NavParams } from 'ionic-angular';
 })
 export class PerformaPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public authService: RestApiProvider, public loadingCtrl: LoadingController, public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
