@@ -27,6 +27,7 @@ export class PerformaPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PerformaPage');
+    this.getOrderFeedback();
   }
 
   backToWelcome(){
@@ -43,5 +44,22 @@ export class PerformaPage {
     this.loading.present();
   }
   
+  getOrderFeedback(){
+    this.showLoader()
+    this.authService.getData('api/provider/order_feedback/' + this.userDetails['id'], this.userDetails['access_token']).then((result)=>{
+      this.responseData = result;
+      console.log(this.responseData);
+      if(this.responseData['success'] == true){
+        this.items = this.responseData['data'];
+        this.loading.dismiss()
+      }else{
+        this.loading.dismiss()
+        //localStorage.clear();
+        setTimeout(()=> this.backToWelcome(), 1000);  
+      }
+    }, (err) => {
+      this.loading.dismiss()
+    });
+  }
 
 }
