@@ -33,7 +33,7 @@ export class HiberDroners {
     });
 
     events.subscribe('rate', (rate) => {
-      console.log(rate)
+      //console.log(rate)
     if(rate == parseInt(rate)){
       this.rate = rate + '.0'
     }else{
