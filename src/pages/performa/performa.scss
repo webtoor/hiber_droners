@@ -1,15 +1,12 @@
 page-performa {
     .ratingss {
-        position:relative;
-        top: -15px;
-        padding: 0px 0px !important;
+      position: relative;
+      top:-10px;
       }
     .rating li {
-        padding: 0px 0px !important;
-        background: none;
         color: #ffb400;
         ion-icon {
-          font-size: 20px;
+          font-size: 15px;
         }
       }
 }

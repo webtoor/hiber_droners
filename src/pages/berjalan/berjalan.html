@@ -13,7 +13,9 @@
               <div text-right style="font-weight: bold">Ikuti</div>
             </ion-col>
             <ion-col>
-               <ion-toggle checked="false" style="position: relative; left: 50%;transform: translateX(-50%);" [(ngModel)]="theState" (ionChange)="change()"></ion-toggle>
+              <ion-item>
+                <ion-toggle color="primary" checked="false" style="position: absolute; left: 45%;transform: translateX(-50%);" [(ngModel)]="theState" (ionChange)="change()"></ion-toggle>
+              </ion-item>
               </ion-col>
             <ion-col>
               <div text-left style="font-weight: bold">Kerja</div>

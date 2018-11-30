@@ -23,7 +23,7 @@
     font-size: 15px;
     font-weight: bold;
     position: relative;
-    bottom:47px;
+    bottom:20px;
     margin-left: 20px;
   }
   .logo{
@@ -44,16 +44,15 @@ body {
     user-select: text;
 }
 .ratings {
-  text-align: right;
+  text-align: center;
   position:relative;
-  top: -80px;
+  top: -70px;
   margin-right: 54px
 }
 .ratings-value {
-  text-align: left;
-  position:relative;
-  top: -48px;
-  margin-left: 110px;
+  position: absolute;
+  top:32px;
+  margin-left: 200px;
   color:white;
   font-weight: bold;
 }
