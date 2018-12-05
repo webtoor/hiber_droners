@@ -18,7 +18,7 @@
       <div *ngIf="item.projecttype == 4">Konstruksi Bangunan</div>
       <div *ngIf="item.projecttype == 5">Pengawasan</div>
       <div>Tanggal Proyek : {{item.dtprojectstart | date: "dd MMM yyyy" }} - {{item.dtprojectend | date: "dd MMM yyyy" }}</div>
-      <ion-grid>
+      <ion-grid >
         <ion-row style="margin-left: -15px; margin-right: -15px">
           <ion-col>
             <button ion-button small block color="navy" style="color:orange" (click)="detail(item.id, item.subject)" >Detail</button>

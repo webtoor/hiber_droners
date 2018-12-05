@@ -36,11 +36,13 @@ export class TabsPage {
   ionViewDidEnter() {
     if(!localStorage.getItem('userProvider')){
       this.navCtrl.setRoot(LoginPage);
+    }else{
+      this.getRating();
     }  
-    this.getRating();
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad TabsPage');
+  
   }
   getRating(){
     this.authService.getData('api/provider/get_rating/' + this.userDetails['id'], this.userDetails['access_token']).then((result)=>{
