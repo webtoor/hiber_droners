@@ -47,7 +47,7 @@ export class BerjalanPage {
     this.showLoader()
     this.authService.getData('api/provider/berjalan_ikuti_show/' + this.userDetails['id'] , this.userDetails['access_token']).then((result)=>{
       this.responseData = result;
-      console.log(this.responseData);
+      console.log(this.responseData['data']);
       if(this.responseData['success'] == true){
         this.items = this.responseData['data'];
         this.loading.dismiss()
@@ -65,7 +65,7 @@ export class BerjalanPage {
     this.showLoader()
     this.authService.getData('api/provider/berjalan_kerja_show/' + this.userDetails['id'] , this.userDetails['access_token']).then((result)=>{
       this.responseData = result;
-      console.log(this.responseData);
+      console.log(this.responseData['data']);
       if(this.responseData['success'] == true){
         this.items = this.responseData['data'];
         this.loading.dismiss()
