@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams, Events } from 'ionic-angular';
+import { Component, ViewChild  } from '@angular/core';
+import { NavController, NavParams, Events, Tabs } from 'ionic-angular';
 import { TawaranPage } from '../tawaran/tawaran';
 import { BerjalanPage } from '../berjalan/berjalan';
 import { PerformaPage } from '../performa/performa';
@@ -23,14 +23,16 @@ import { RestApiProvider } from '../../providers/rest-api/rest-api';
 export class TabsPage {
   public userDetails : any;
   public responseData: any;
+  @ViewChild('myTabs') tabRef: Tabs;
 
   tab1Root = TawaranPage;
   tab2Root = BerjalanPage;
   tab3Root = PerformaPage;
-  
+  bidding:any;
   constructor(public events: Events, public navCtrl: NavController, public navParams: NavParams, public authService: RestApiProvider) {
     const data = JSON.parse(localStorage.getItem('userProvider'));
     this.userDetails = data;
+    this.bidding = navParams.get('bidding');
   }
 
   ionViewDidEnter() {
@@ -39,6 +41,9 @@ export class TabsPage {
     }else{
       this.getRating();
     }  
+    if(this.bidding == '1'){
+      this.tabRef.select(2);
+    }
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad TabsPage');
