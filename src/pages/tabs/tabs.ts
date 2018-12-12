@@ -42,7 +42,7 @@ export class TabsPage {
       this.getRating();
     }  
     if(this.bidding == '1'){
-      this.tabRef.select(2);
+      this.tabRef.select(1);
     }
   }
   ionViewDidLoad() {
