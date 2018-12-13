@@ -51,7 +51,7 @@ export class TawaranPage {
 
   getTawaran(){
     this.showLoader()
-    this.authService.getData('api/provider/tawaran_show', this.userDetails['access_token']).then((result)=>{
+    this.authService.getData('api/provider/tawaran_show/' + this.userDetails['id'], this.userDetails['access_token']).then((result)=>{
       this.responseData = result;
       console.log(this.responseData);
       if(this.responseData['success'] == true){

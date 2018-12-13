@@ -10,21 +10,21 @@
       <div *ngFor="let item of items">
       <ion-card >
       <ion-card-content>
-     <div style="font-weight:bold; margin-bottom:20px;" >{{item.subject}}</div>
-      <div> Dibuat  : {{item.created_at | date: "dd MMM yyyy HH:mm a"}} - Oleh {{item.user_client.username}}</div>
-      <div *ngIf="item.projecttype == 1">Pemetaan Tanaman</div>
-      <div *ngIf="item.projecttype == 2">Liburan</div>
-      <div *ngIf="item.projecttype == 3">Lalu-lintas</div>
-      <div *ngIf="item.projecttype == 4">Konstruksi Bangunan</div>
-      <div *ngIf="item.projecttype == 5">Pengawasan</div>
-      <div>Tanggal Proyek : {{item.dtprojectstart | date: "dd MMM yyyy" }} - {{item.dtprojectend | date: "dd MMM yyyy" }}</div>
+     <div style="font-weight:bold; margin-bottom:20px;" >{{item.order.subject}}</div>
+      <div> Dibuat  : {{item.order.created_at | date: "dd MMM yyyy HH:mm a"}} - Oleh {{item.user_clients.username}}</div>
+      <div *ngIf="item.order.projecttype == 1">Pemetaan Tanaman</div>
+      <div *ngIf="item.order.projecttype == 2">Liburan</div>
+      <div *ngIf="item.order.projecttype == 3">Lalu-lintas</div>
+      <div *ngIf="item.order.projecttype == 4">Konstruksi Bangunan</div>
+      <div *ngIf="item.order.projecttype == 5">Pengawasan</div>
+      <div>Tanggal Proyek : {{item.order.dtprojectstart | date: "dd MMM yyyy" }} - {{item.order.dtprojectend | date: "dd MMM yyyy" }}</div>
       <ion-grid >
         <ion-row style="margin-left: -15px; margin-right: -15px">
           <ion-col>
-            <button ion-button small block color="navy" style="color:orange" (click)="detail(item.id, item.subject)" >Detail</button>
+            <button ion-button small block color="navy" style="color:orange" (click)="detail(item.order.id, item.order.subject)" >Detail</button>
           </ion-col>
           <ion-col>
-              <button ion-button outline small block color="navy" style="color:orange"(click)="ikutiModal(item.id, item.subject)">Ikuti</button>
+              <button ion-button outline small block color="navy" style="color:orange"(click)="ikutiModal(item.order.id, item.order.subject)">Ikuti</button>
             </ion-col>
         </ion-row>
       </ion-grid>
