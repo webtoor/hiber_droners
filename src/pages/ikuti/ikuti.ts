@@ -46,7 +46,7 @@ export class IkutiPage {
     this.dataBidding.order_id = order_id;
     this.dataBidding.proposal_by = this.userDetails['id']
     console.log(this.dataBidding)
-    if (this.dataBidding.comment && this.dataBidding.offered_price) {
+    if (this.dataBidding.offered_price) {
       this.authService.postData(this.dataBidding, "api/provider/bidding",  this.userDetails['access_token']).then((result) => {
         this.responseData = result;
         console.log(this.responseData);
