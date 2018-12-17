@@ -52,11 +52,11 @@ export class TabsPage {
   getRating(){
     this.authService.getData('api/provider/get_rating/' + this.userDetails['id'], this.userDetails['access_token']).then((result)=>{
       this.responseData = result;
-      //console.log(this.responseData);
+      console.log(this.responseData);
       if(this.responseData['success'] == true){
         this.events.publish('rate', this.responseData['data']['total_rating']);
       }else{
-       console.log('error')
+       console.log('false, error')
       }
     }, (err) => {
       console.log('error')

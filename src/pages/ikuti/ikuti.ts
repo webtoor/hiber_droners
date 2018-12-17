@@ -24,7 +24,6 @@ export class IkutiPage {
   public responseData: any;
   public items : any;
   loading:any
-
   constructor(private toastCtrl: ToastController, public loadingCtrl: LoadingController, public app: App,public authService: RestApiProvider, public viewCtrl: ViewController,public navCtrl: NavController, public navParams: NavParams) {
     this.subject= navParams.get('subject');
     this.order_id= navParams.get('order_id');
