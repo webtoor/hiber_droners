@@ -29,7 +29,7 @@ export class TawaranPage {
     console.log(this.userDetails)
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     console.log('ionViewDidLoad TawaranPage');
     if(localStorage.getItem('userProvider')){
       this.getTawaran();

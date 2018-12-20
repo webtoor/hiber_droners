@@ -54,6 +54,8 @@ export class IkutiPage {
           this.navCtrl.setRoot(TabsPage, {
             bidding : 1,
           });
+        }else if(this.responseData["message"] == "double"){
+          this.presentToast("Anda sudah mengikuti project ini!!");
         }
         else{
         this.loading.dismiss()
