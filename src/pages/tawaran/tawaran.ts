@@ -4,6 +4,7 @@ import { RestApiProvider } from '../../providers/rest-api/rest-api';
 import { LoginPage } from '../login/login';
 import { DetailTawaranPage } from '../detail-tawaran/detail-tawaran';
 import { IkutiPage } from '../ikuti/ikuti';
+import { FilterPage } from '../filter/filter';
 
 
 /**
@@ -90,7 +91,11 @@ export class TawaranPage {
   }
 
   filter(){
-    
     console.log('y');
+    let modal = this.modalCtrl.create(FilterPage, { provider_id:this.userDetails['id'] }, {cssClass: 'select-modal' });
+    modal.onDidDismiss(data => {
+    
+    })
+    modal.present();
   }
 }
