@@ -20,6 +20,9 @@ export class FilterPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad FilterPage');
   }
+  dismiss(){
+    this.viewCtrl.dismiss();
+  }
 
   // Pemetaan Tanaman
   petaTanaman() {
