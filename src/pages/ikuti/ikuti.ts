@@ -55,11 +55,12 @@ export class IkutiPage {
             bidding : 1,
           });
         }else if(this.responseData["message"] == "double"){
+          this.loading.dismiss()
           this.presentToast("Anda sudah mengikuti project ini!!");
         }
         else{
         this.loading.dismiss()
-        //localStorage.clear();
+        localStorage.clear();
         setTimeout(()=> this.backToWelcome(), 1000);  
         }
       }, (err) => {

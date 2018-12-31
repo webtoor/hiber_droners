@@ -88,4 +88,9 @@ export class TawaranPage {
     })
     modal.present();
   }
+
+  filter(){
+    
+    console.log('y');
+  }
 }

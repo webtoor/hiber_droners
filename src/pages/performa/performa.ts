@@ -26,7 +26,7 @@ export class PerformaPage {
     this.userDetails = data;
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     console.log('ionViewDidLoad PerformaPage');
     this.getOrderFeedback();
   }
