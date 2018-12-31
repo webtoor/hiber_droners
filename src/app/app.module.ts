@@ -15,6 +15,8 @@ import { LoginPage } from '../pages/login/login';
 import { DetailTawaranPage } from '../pages/detail-tawaran/detail-tawaran';
 import { IkutiPage } from '../pages/ikuti/ikuti';
 import { DetailBerjalanPage } from '../pages/detail-berjalan/detail-berjalan';
+import { FilterPage } from '../pages/filter/filter';
+
 import { Ionic2RatingModule } from 'ionic2-rating';
 
 
@@ -39,7 +41,8 @@ import { HttpModule } from "@angular/http";
     ListPage,
     DetailTawaranPage,
     IkutiPage,
-    DetailBerjalanPage
+    DetailBerjalanPage,
+    FilterPage
   ],
   imports: [
     BrowserModule,HttpModule,
@@ -61,7 +64,8 @@ import { HttpModule } from "@angular/http";
     ListPage,
     DetailTawaranPage,
     IkutiPage,
-    DetailBerjalanPage
+    DetailBerjalanPage,
+    FilterPage
   ],
   providers: [
     StatusBar,
