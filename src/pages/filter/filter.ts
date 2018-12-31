@@ -21,17 +21,37 @@ export class FilterPage {
     console.log('ionViewDidLoad FilterPage');
   }
 
-  // Termurah
-  termurah() {
+  // Pemetaan Tanaman
+  petaTanaman() {
+    this.viewCtrl.dismiss({
+      kode : '1'
+    });
+  }
+  // Liburan
+  Liburan() {
+    this.viewCtrl.dismiss({
+      kode : '2'
+    });
+  }
+  
+  // lalu-lintas
+  laluLintas() {
     this.viewCtrl.dismiss({
       kode : '3'
     });
   }
-  //Tertinggi
-  termahal() {
+
+  // konsBangunan
+  konsBangunan() {
     this.viewCtrl.dismiss({
       kode : '4'
     });
   }
 
+   // Pengawasan
+   pengawasan() {
+    this.viewCtrl.dismiss({
+      kode : '5'
+    });
+  }
 }

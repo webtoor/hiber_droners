@@ -95,8 +95,11 @@ export class TawaranPage {
     console.log('y');
     let modal = this.modalCtrl.create(FilterPage, { provider_id:this.userDetails['id'] }, {cssClass: 'select-modal' });
     modal.onDidDismiss(data => {
-      this.filter = data['kode']
-      console.log(this.filter)
+      if(data){
+        this.filter = data['kode']
+        console.log(this.filter)
+      }
+
     })
     modal.present();
   }
