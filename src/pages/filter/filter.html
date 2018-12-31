@@ -5,14 +5,19 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
+<!-- 
   <ion-navbar>
     <ion-title>filter</ion-title>
-  </ion-navbar>
+  </ion-navbar> -->
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-list>
+    <ion-list-header>Filter</ion-list-header>
+    <button ion-item (click)="termurah()">Harga Terendah</button>
+    <button ion-item (click)="termahal()">Harga Tertinggi</button>
+  </ion-list>
 
 </ion-content>

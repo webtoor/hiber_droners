@@ -24,6 +24,7 @@ export class TawaranPage {
   public responseData: any;
   public items : any;
   loading:any;
+  filter:any;
   constructor(public modalCtrl: ModalController, public loadingCtrl: LoadingController, public app: App, public navCtrl: NavController, public navParams: NavParams, public authService: RestApiProvider) {
     const data = JSON.parse(localStorage.getItem('userProvider'));
     this.userDetails = data;
@@ -90,11 +91,12 @@ export class TawaranPage {
     modal.present();
   }
 
-  filter(){
+  filterSort(){
     console.log('y');
     let modal = this.modalCtrl.create(FilterPage, { provider_id:this.userDetails['id'] }, {cssClass: 'select-modal' });
     modal.onDidDismiss(data => {
-    
+      this.filter = data['kode']
+      console.log(this.filter)
     })
     modal.present();
   }

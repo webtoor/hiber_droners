@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { ViewController, NavController, NavParams } from 'ionic-angular';
 
 /**
  * Generated class for the FilterPage page.
@@ -14,11 +14,24 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class FilterPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public viewCtrl: ViewController, public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad FilterPage');
+  }
+
+  // Termurah
+  termurah() {
+    this.viewCtrl.dismiss({
+      kode : '3'
+    });
+  }
+  //Tertinggi
+  termahal() {
+    this.viewCtrl.dismiss({
+      kode : '4'
+    });
   }
 
 }
