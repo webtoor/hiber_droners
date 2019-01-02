@@ -34,6 +34,7 @@ export class TawaranPage {
   ionViewDidEnter() {
     console.log('ionViewDidLoad TawaranPage');
     if(localStorage.getItem('userProvider')){
+      this.filter = '0';
       this.getTawaran();
     }else if(!localStorage.getItem('userProvider')){
       this.navCtrl.setRoot(LoginPage);
@@ -53,7 +54,7 @@ export class TawaranPage {
 
   getTawaran(){
     this.showLoader()
-    this.authService.getData('api/provider/tawaran_show/' + this.userDetails['id'], this.userDetails['access_token']).then((result)=>{
+    this.authService.getData('api/provider/tawaran_show/' + this.userDetails['id'] + '/' + this.filter, this.userDetails['access_token']).then((result)=>{
       this.responseData = result;
       console.log(this.responseData);
       if(this.responseData['success'] == true){
@@ -92,11 +93,12 @@ export class TawaranPage {
   }
 
   filterSort(){
-    console.log('y');
+    console.log('filter');
     let modal = this.modalCtrl.create(FilterPage, { provider_id:this.userDetails['id'] }, {cssClass: 'select-modal' });
     modal.onDidDismiss(data => {
       if(data){
-        this.filter = data['kode']
+        this.filter = data['kode'];
+        this.getTawaran();
         console.log(this.filter)
       }
 
