@@ -63,4 +63,13 @@ export class PerformaPage {
     });
   }
 
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.getOrderFeedback();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
 }
