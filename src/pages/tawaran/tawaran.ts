@@ -105,4 +105,13 @@ export class TawaranPage {
     })
     modal.present();
   }
+
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.getTawaran();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
 }
