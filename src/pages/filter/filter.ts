@@ -24,6 +24,11 @@ export class FilterPage {
     this.viewCtrl.dismiss();
   }
 
+  allType() {
+    this.viewCtrl.dismiss({
+      kode : '0'
+    });
+  }
   // Pemetaan Tanaman
   petaTanaman() {
     this.viewCtrl.dismiss({
