@@ -25,6 +25,7 @@ export class DetailBerjalanPage {
   order_id:any;
   map:any;
   outputs:any;
+  area : any;
   @ViewChild('map') mapElement: ElementRef;
   constructor(public authService: RestApiProvider, public loadingCtrl: LoadingController, public app: App,public navCtrl: NavController, public navParams: NavParams) {
     this.subject= navParams.get('subject');
@@ -62,7 +63,7 @@ export class DetailBerjalanPage {
         cords.push(new google.maps.LatLng(parseFloat(this.responseData['polygon'][i]['latitude']), parseFloat(this.responseData['polygon'][i]['longitude'])));
       }
       //console.log(cords)
-        new google.maps.Polygon({
+        var polygons = new google.maps.Polygon({
            paths: cords,
            map: this.map,
            strokeColor: '#000',
@@ -87,6 +88,9 @@ export class DetailBerjalanPage {
           }
          }
          console.log(this.outputs)
+         var luasArea = google.maps.geometry.spherical.computeArea(polygons.getPath());
+         this.area = luasArea.toFixed(2)
+         console.log(this.area)
         this.loading.dismiss()
       }else{
         this.loading.dismiss()
