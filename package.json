@@ -21,6 +21,7 @@
     "@angular/platform-browser": "5.2.11",
     "@angular/platform-browser-dynamic": "5.2.11",
     "@ionic-native/core": "~4.15.0",
+    "@ionic-native/push": "^4.19.0",
     "@ionic-native/splash-screen": "~4.15.0",
     "@ionic-native/status-bar": "~4.15.0",
     "@ionic/storage": "2.2.0",
@@ -57,6 +58,7 @@
       },
       "cordova-plugin-ionic-keyboard": {},
       "phonegap-plugin-push": {
+        "SENDER_ID": "20786705039",
         "FCM_VERSION": "11.6.2"
       }
     },
