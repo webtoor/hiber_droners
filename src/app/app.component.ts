@@ -3,6 +3,7 @@ import { Nav, Platform, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
+import { Push, PushObject, PushOptions } from '@ionic-native/push';
 
 import { AkunPage } from '../pages/akun/akun';
 import { HubungiPage } from '../pages/hubungi/hubungi';
@@ -21,7 +22,7 @@ export class HiberDroners {
   emails :any;
   pages: Array<{title: string, icon:any, component: any}>;
   rate :string;
-  constructor(public platform: Platform, public events: Events,  public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(private push: Push,public platform: Platform, public events: Events,  public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
     this.userDetails = JSON.parse(localStorage.getItem('userProvider'));
     if(this.userDetails){
@@ -56,11 +57,38 @@ export class HiberDroners {
       // Here you can do any higher level native things you might need.
       setTimeout(() => {
         this.splashScreen.hide();
+        this.pushSetup();
         }, 100);
         this.statusBar.backgroundColorByHexString('#2A2C43');
         this.statusBar.styleBlackTranslucent();
       
     });
+  }
+
+  pushSetup(){
+    const options: PushOptions = {
+      android: {
+        senderID : '20786705039'
+      },
+      ios: {
+          alert: 'true',
+          badge: true,
+          sound: 'false'
+      },
+      windows: {},
+     /*  browser: {
+          pushServiceURL: 'http://push.api.phonegap.com/v1/push'
+      } */
+   };
+   
+   const pushObject: PushObject = this.push.init(options);
+   
+   
+   pushObject.on('notification').subscribe((notification: any) => console.log('Received a notification', notification));
+   
+   pushObject.on('registration').subscribe((registration: any) => console.log('Device registered', registration));
+   
+   pushObject.on('error').subscribe(error => console.error('Error with Push plugin', error));
   }
 
   openPage(page) {

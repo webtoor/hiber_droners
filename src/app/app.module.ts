@@ -24,7 +24,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestApiProvider } from '../providers/rest-api/rest-api';
 import { HttpModule } from "@angular/http";
-
+import { Push } from '@ionic-native/push';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,7 @@ import { HttpModule } from "@angular/http";
     DetailTawaranPage,
     IkutiPage,
     DetailBerjalanPage,
-    FilterPage
+    FilterPage,
   ],
   imports: [
     BrowserModule,HttpModule,
@@ -71,7 +71,8 @@ import { HttpModule } from "@angular/http";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RestApiProvider
+    RestApiProvider,
+    Push
   ]
 })
 export class AppModule {}
