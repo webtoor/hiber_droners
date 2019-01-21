@@ -25,7 +25,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestApiProvider } from '../providers/rest-api/rest-api';
 import { HttpModule } from "@angular/http";
 import { Push } from '@ionic-native/push';
-import { FCM } from '@ionic-native/fcm';
 
 @NgModule({
   declarations: [
@@ -74,7 +73,6 @@ import { FCM } from '@ionic-native/fcm';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RestApiProvider,
     Push,
-    FCM
   ]
 })
 export class AppModule {}

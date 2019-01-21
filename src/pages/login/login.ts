@@ -18,13 +18,15 @@ import { RestApiProvider } from '../../providers/rest-api/rest-api'
 export class LoginPage {
   responseData: any;
   loading: any;
-  userProviders = { "email": "", "password": "" };
+  userProviders = { "email": "", "password": "", "device_token" : "" };
   constructor(public navCtrl: NavController, public navParams: NavParams, public authService: RestApiProvider, public menu: MenuController, private toastCtrl: ToastController, public loadingCtrl: LoadingController, public events: Events) {
     this.menu.swipeEnable(false);
   }
 
   ionViewDidEnter() {
-  
+   /*  this.fcm.getToken().then(token => {
+      this.userProviders.device_token = token;
+    }); */
   }
 
   login(){
