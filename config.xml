@@ -91,4 +91,5 @@
         <variable name="SENDER_ID" value="20786705039" />
         <variable name="FCM_VERSION" value="11.6.2" />
     </plugin>
+    <plugin name="cordova-plugin-fcm-with-dependecy-updated" spec="^2.4.0" />
 </widget>
