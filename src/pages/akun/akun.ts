@@ -34,6 +34,7 @@ export class AkunPage {
 
   logout(){
      //Api Token Logout
+     
      this.fcm.unsubscribeFromTopic('tawaran');
      localStorage.clear();
       setTimeout(()=> this.backToWelcome(), 1000);
