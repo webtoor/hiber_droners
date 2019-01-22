@@ -2,6 +2,9 @@ import { Component } from '@angular/core';
 import { MenuController, NavController, NavParams, LoadingController, ToastController, Events  } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import { RestApiProvider } from '../../providers/rest-api/rest-api'
+/* import { Push, PushObject, PushOptions } from '@ionic-native/push';
+ */
+import { FCM } from '@ionic-native/fcm';
 
 /**
  * Generated class for the LoginPage page.
@@ -19,14 +22,43 @@ export class LoginPage {
   responseData: any;
   loading: any;
   userProviders = { "email": "", "password": "", "device_token" : "" };
-  constructor(public navCtrl: NavController, public navParams: NavParams, public authService: RestApiProvider, public menu: MenuController, private toastCtrl: ToastController, public loadingCtrl: LoadingController, public events: Events) {
+  constructor(public fcm: FCM, public navCtrl: NavController, public navParams: NavParams, public authService: RestApiProvider, public menu: MenuController, private toastCtrl: ToastController, public loadingCtrl: LoadingController, public events: Events) {
     this.menu.swipeEnable(false);
   }
 
   ionViewDidEnter() {
-   /*  this.fcm.getToken().then(token => {
+    this.pushSetup()
+  }
+
+  /* pushSetup(){
+    const options: PushOptions = {
+      android: {
+        senderID : '20786705039'
+      },
+      ios: {
+          alert: 'true',
+          badge: true,
+          sound: 'false'
+      },
+      windows: {},
+   };
+   
+   const pushObject: PushObject = this.push.init(options);
+   
+   
+   
+   pushObject.on('registration').subscribe((registration: any) => {
+    console.log('Device registered', registration)
+    this.userProviders.device_token = registration['registrationId']
+   }
+  );
+  } */
+
+  pushSetup(){
+    this.fcm.getToken().then(token => {
+      console.log(token);
       this.userProviders.device_token = token;
-    }); */
+    });
   }
 
   login(){

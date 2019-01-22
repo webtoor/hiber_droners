@@ -86,9 +86,6 @@
     <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^2.0.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
-    <plugin name="phonegap-plugin-push" spec="^2.1.3">
-        <variable name="SENDER_ID" value="20786705039" />
-        <variable name="FCM_VERSION" value="11.6.2" />
-    </plugin>
-    <engine name="android" spec="7.0.0" />
+    <plugin name="cordova-plugin-fcm-with-dependecy-updated" spec="^2.4.0" />
+    <engine name="android" spec="6.4.0" />
 </widget>

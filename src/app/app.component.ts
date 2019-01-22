@@ -3,11 +3,12 @@ import { Nav, Platform, Events } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
-import { Push, PushObject, PushOptions } from '@ionic-native/push';
-
+/* import { Push, PushObject, PushOptions } from '@ionic-native/push';
+ */
 import { AkunPage } from '../pages/akun/akun';
 import { HubungiPage } from '../pages/hubungi/hubungi';
 import { BantuanPage } from '../pages/bantuan/bantuan';
+import { FCM } from '@ionic-native/fcm';
 
 
 
@@ -22,7 +23,7 @@ export class HiberDroners {
   emails :any;
   pages: Array<{title: string, icon:any, component: any}>;
   rate :string;
-  constructor(private push: Push,public platform: Platform, public events: Events,  public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public fcm: FCM,public platform: Platform, public events: Events,  public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
     this.userDetails = JSON.parse(localStorage.getItem('userProvider'));
     if(this.userDetails){
@@ -55,9 +56,9 @@ export class HiberDroners {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+      this.pushSetup() 
       setTimeout(() => {
-        this.splashScreen.hide();
-        this.pushSetup();
+       this.splashScreen.hide();
         }, 100);
         this.statusBar.backgroundColorByHexString('#2A2C43');
         this.statusBar.styleBlackTranslucent();
@@ -66,6 +67,19 @@ export class HiberDroners {
   }
 
   pushSetup(){
+  /*   this.fcm.getToken().then(token => {
+      console.log(token);
+    }); */
+    this.fcm.onNotification().subscribe(data => {
+      if(data.wasTapped){
+        console.log("Received in background");
+      } else {
+        console.log("Received in foreground");
+      };
+    });
+    
+  }
+  /* pushSetup(){
     const options: PushOptions = {
       android: {
         senderID : '20786705039'
@@ -76,20 +90,13 @@ export class HiberDroners {
           sound: 'false'
       },
       windows: {},
-     /*  browser: {
-          pushServiceURL: 'http://push.api.phonegap.com/v1/push'
-      } */
    };
    
    const pushObject: PushObject = this.push.init(options);
    
    
    pushObject.on('notification').subscribe((notification: any) => console.log('Received a notification', notification));
-   
-   pushObject.on('registration').subscribe((registration: any) => console.log('Device registered', registration));
-   
-   pushObject.on('error').subscribe(error => console.error('Error with Push plugin', error));
-  }
+  } */
 
   openPage(page) {
     // Reset the content nav to have just this page
