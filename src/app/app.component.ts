@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, Events } from 'ionic-angular';
+import { Nav, Platform, Events, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -23,7 +23,7 @@ export class HiberDroners {
   emails :any;
   pages: Array<{title: string, icon:any, component: any}>;
   rate :string;
-  constructor(public fcm: FCM,public platform: Platform, public events: Events,  public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(private alertCtrl: AlertController, public fcm: FCM,public platform: Platform, public events: Events,  public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
     this.userDetails = JSON.parse(localStorage.getItem('userProvider'));
     if(this.userDetails){
@@ -67,14 +67,30 @@ export class HiberDroners {
   }
 
   pushSetup(){
-  /*   this.fcm.getToken().then(token => {
-      console.log(token);
-    }); */
     this.fcm.onNotification().subscribe(data => {
       if(data.wasTapped){
         console.log("Received in background");
+        if(data.action == 'tawaran'){
+          this.nav.setRoot(TabsPage);
+        }
       } else {
         console.log("Received in foreground");
+        if(data.action == 'tawaran'){
+          let alert = this.alertCtrl.create({
+            title: data.title,
+            subTitle: data.body,
+            buttons: [
+              {
+                text: 'OK',
+                handler: () => {
+                  this.nav.setRoot(TabsPage);
+                }
+              }
+            ]
+          });
+          alert.present();
+        }
+      
       };
     });
     

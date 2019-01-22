@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MenuController, NavController, NavParams } from 'ionic-angular';
 import { LoginPage } from '../login/login';
+import { FCM } from '@ionic-native/fcm';
 
 /**
  * Generated class for the AkunPage page.
@@ -19,7 +20,7 @@ export class AkunPage {
   public responseData: any;
   acces_token : any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController,) {
+  constructor(public fcm: FCM, public navCtrl: NavController, public navParams: NavParams, public menu: MenuController,) {
     this.menu.swipeEnable(false);
     this.userDetails  = JSON.parse(localStorage.getItem('userProvider'));
   }
@@ -33,6 +34,7 @@ export class AkunPage {
 
   logout(){
      //Api Token Logout
+     this.fcm.unsubscribeFromTopic('tawaran');
      localStorage.clear();
       setTimeout(()=> this.backToWelcome(), 1000);
    }
