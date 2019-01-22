@@ -74,6 +74,7 @@ export class HiberDroners {
           this.nav.setRoot(TabsPage);
         }
       } else {
+        
         console.log("Received in foreground");
         if(data.action == 'tawaran'){
           let alert = this.alertCtrl.create({
