@@ -72,6 +72,7 @@ export class LoginPage {
           this.events.publish('email', this.responseData.email);
           localStorage.setItem('userProvider', JSON.stringify(this.responseData));
           this.loading.dismiss();
+          this.fcm.subscribeToTopic('droner_info');
           this.fcm.subscribeToTopic('tawaran');
           this.navCtrl.setRoot(TabsPage);
         }
