@@ -9,6 +9,7 @@ import { AkunPage } from '../pages/akun/akun';
 import { HubungiPage } from '../pages/hubungi/hubungi';
 import { BantuanPage } from '../pages/bantuan/bantuan';
 import { FCM } from '@ionic-native/fcm';
+import { Autostart } from '@ionic-native/autostart';
 
 
 
@@ -23,7 +24,7 @@ export class HiberDroners {
   emails :any;
   pages: Array<{title: string, icon:any, component: any}>;
   rate :string;
-  constructor(private alertCtrl: AlertController, public fcm: FCM,public platform: Platform, public events: Events,  public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(private autostart: Autostart, private alertCtrl: AlertController, public fcm: FCM,public platform: Platform, public events: Events,  public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
     this.userDetails = JSON.parse(localStorage.getItem('userProvider'));
     if(this.userDetails){
@@ -56,7 +57,8 @@ export class HiberDroners {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      this.pushSetup() 
+      this.autostart.enable(); 
+      this.pushSetup();
       setTimeout(() => {
        this.splashScreen.hide();
         }, 100);
@@ -72,6 +74,11 @@ export class HiberDroners {
         console.log("Received in background");
         if(data.action == 'tawaran'){
           this.nav.setRoot(TabsPage);
+        }
+        if(data.berjalan == 'berjalan'){
+          this.nav.setRoot(TabsPage, {
+            berjalan : 1,
+          });
         }
       } else {
         console.log("Received in foreground");

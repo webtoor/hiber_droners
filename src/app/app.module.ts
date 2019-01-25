@@ -26,6 +26,8 @@ import { RestApiProvider } from '../providers/rest-api/rest-api';
 import { HttpModule } from "@angular/http";
 /* import { Push } from '@ionic-native/push'; */
 import { FCM } from '@ionic-native/fcm';
+import { Autostart } from '@ionic-native/autostart';
+
 
 
 @NgModule({
@@ -74,7 +76,8 @@ import { FCM } from '@ionic-native/fcm';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     RestApiProvider,
-    FCM
+    FCM,
+    Autostart
     /* Push */
    ]
 })
