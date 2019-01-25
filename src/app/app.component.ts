@@ -89,7 +89,7 @@ export class HiberDroners {
             subTitle: data.body,
             buttons: [
               {
-                text: 'OK',
+                text: 'LIHAT',
                 handler: () => {
                   this.nav.setRoot(TabsPage);
                 }
@@ -104,7 +104,7 @@ export class HiberDroners {
             subTitle: data.body,
             buttons: [
               {
-                text: 'OK',
+                text: 'LIHAT',
                 handler: () => {
                   this.nav.setRoot(TabsPage, {
                     bekerja : 1,
