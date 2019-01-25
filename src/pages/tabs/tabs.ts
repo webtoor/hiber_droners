@@ -29,10 +29,12 @@ export class TabsPage {
   tab2Root = BerjalanPage;
   tab3Root = PerformaPage;
   bidding:any;
+  berjalan : any;
   constructor(public events: Events, public navCtrl: NavController, public navParams: NavParams, public authService: RestApiProvider) {
     const data = JSON.parse(localStorage.getItem('userProvider'));
     this.userDetails = data;
     this.bidding = navParams.get('bidding');
+    this.berjalan = navParams.get('berjalan');
   }
 
   ionViewDidEnter() {
@@ -42,6 +44,9 @@ export class TabsPage {
       this.getRating();
     }  
     if(this.bidding == '1'){
+      this.tabRef.select(1);
+    }
+    if(this.berjalan == '1'){
       this.tabRef.select(1);
     }
   }
