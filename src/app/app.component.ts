@@ -12,7 +12,7 @@ import { FCM } from '@ionic-native/fcm';
 import { Autostart } from '@ionic-native/autostart';
 
 
-
+declare var FCMPlugin: any;
 @Component({
   templateUrl: 'app.html'
 })
@@ -69,6 +69,7 @@ export class HiberDroners {
   }
 
   pushSetup(){
+    if(this.platform.is('cordova')){    
     this.fcm.onNotification().subscribe(data => {
       if(data.wasTapped){
         console.log("Received in background");
@@ -117,7 +118,7 @@ export class HiberDroners {
       
       };
     });
-    
+  }
   }
   /* pushSetup(){
     const options: PushOptions = {
