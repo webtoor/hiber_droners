@@ -75,9 +75,9 @@ export class HiberDroners {
         if(data.action == 'tawaran'){
           this.nav.setRoot(TabsPage);
         }
-        if(data.action == 'berjalan'){
+        if(data.action == 'bekerja'){
           this.nav.setRoot(TabsPage, {
-            berjalan : 1,
+            bekerja : 1,
           });
         }
       } else {
@@ -97,7 +97,7 @@ export class HiberDroners {
           });
           alert.present();
         }
-        if(data.action == 'berjalan'){
+        if(data.action == 'bekerja'){
           let alert = this.alertCtrl.create({
             title: data.title,
             subTitle: data.body,
@@ -106,7 +106,7 @@ export class HiberDroners {
                 text: 'OK',
                 handler: () => {
                   this.nav.setRoot(TabsPage, {
-                    berjalan : 1,
+                    bekerja : 1,
                   });
                 }
               }

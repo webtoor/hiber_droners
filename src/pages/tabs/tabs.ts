@@ -29,12 +29,12 @@ export class TabsPage {
   tab2Root = BerjalanPage;
   tab3Root = PerformaPage;
   bidding:any;
-  berjalan : any;
+  bekerja : any;
   constructor(public events: Events, public navCtrl: NavController, public navParams: NavParams, public authService: RestApiProvider) {
     const data = JSON.parse(localStorage.getItem('userProvider'));
     this.userDetails = data;
     this.bidding = navParams.get('bidding');
-    this.berjalan = navParams.get('berjalan');
+    this.bekerja = navParams.get('bekerja');
   }
 
   ionViewDidEnter() {
@@ -46,7 +46,7 @@ export class TabsPage {
     if(this.bidding == '1'){
       this.tabRef.select(1);
     }
-    if(this.berjalan == '1'){
+    if(this.bekerja == '1'){
       this.navParams.data = 1
       this.tabRef.select(1);
     }
