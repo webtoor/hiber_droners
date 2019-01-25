@@ -97,6 +97,23 @@ export class HiberDroners {
           });
           alert.present();
         }
+        if(data.action == 'berjalan'){
+          let alert = this.alertCtrl.create({
+            title: data.title,
+            subTitle: data.body,
+            buttons: [
+              {
+                text: 'OK',
+                handler: () => {
+                  this.nav.setRoot(TabsPage, {
+                    berjalan : 1,
+                  });
+                }
+              }
+            ]
+          });
+          alert.present();
+        }
       
       };
     });
