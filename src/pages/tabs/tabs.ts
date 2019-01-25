@@ -47,6 +47,7 @@ export class TabsPage {
       this.tabRef.select(1);
     }
     if(this.berjalan == '1'){
+      this.navParams.data = 1
       this.tabRef.select(1);
     }
   }

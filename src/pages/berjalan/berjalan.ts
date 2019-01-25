@@ -29,7 +29,13 @@ export class BerjalanPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad BerjalanPage');
-    this.getBerjalanIkuti();
+    if(this.navParams.data == 1){
+      this.theState = true
+      this.getBerjalanKerja();
+    }else{
+      this.getBerjalanIkuti();
+    }
+    console.log(this.navParams.data)
   }
 
   change(){

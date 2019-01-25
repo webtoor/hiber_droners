@@ -75,7 +75,7 @@ export class HiberDroners {
         if(data.action == 'tawaran'){
           this.nav.setRoot(TabsPage);
         }
-        if(data.berjalan == 'berjalan'){
+        if(data.action == 'berjalan'){
           this.nav.setRoot(TabsPage, {
             berjalan : 1,
           });
