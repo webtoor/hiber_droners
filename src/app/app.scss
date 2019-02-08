@@ -22,9 +22,10 @@
     color : white;
     font-size: 15px;
     font-weight: bold;
-    position: relative;
-    bottom:20px;
-    margin-left: 20px;
+    position: fixed;
+    margin:auto;
+    top:110px;
+    left:20px;
   }
   .logo{
       height: 75px;
@@ -51,8 +52,8 @@ body {
 }
 .ratings-value {
   position: absolute;
-  top:32px;
-  margin-left: 200px;
+  top:34px;
+  margin-left: 202px;
   color:white;
   font-weight: bold;
 }
