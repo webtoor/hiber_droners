@@ -20,5 +20,6 @@
       <div style="font-weight: bold">- Luas Area : {{area}} meter<sup>2</sup></div> 
      <div style="font-weight: bold">- Hasil : {{outputs}}</div> 
      <div *ngFor="let item of items" style="font-weight: bold">- Latitude & Longitude : {{item.latitude}}, {{item.longitude}} </div> 
-  </ion-toolbar>
+     <button ion-button small block color="navy" style="color:orange" (click)="sendEmail(item.order.id)">Send KML to Email</button>
+    </ion-toolbar>
   </ion-footer>
