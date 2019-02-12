@@ -26,6 +26,7 @@ export class DetailBerjalanPage {
   map:any;
   outputs:any;
   area : any;
+  dataEmail = {"order_id" : "", "email" : ""};
   @ViewChild('map') mapElement: ElementRef;
   constructor(public authService: RestApiProvider, public loadingCtrl: LoadingController, public app: App,public navCtrl: NavController, public navParams: NavParams) {
     this.subject= navParams.get('subject');
@@ -115,5 +116,21 @@ export class DetailBerjalanPage {
     this.loading.present();
   }
 
+  sendEmail(order_id:any){
+    console.log(order_id)
+    this.dataEmail.order_id = order_id;
+    this.dataEmail.email = this.userDetails['email']
+    this.authService.postData(this.dataEmail, "api/provider/send_email", this.userDetails['access_token']).then((result) => {
+      this.responseData = result;
+      console.log(this.responseData);
+      if (this.responseData["success"] == true) {
+        console.log("benar")
+      }
+      else{
+      }
+    }, (err) => {
+  
+    });
+  }
+  }
 
-}
