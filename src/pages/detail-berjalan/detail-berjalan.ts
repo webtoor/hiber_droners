@@ -53,7 +53,8 @@ export class DetailBerjalanPage {
     let mapOptions = {
       center:LatLng,
       zoom:17,
-      MapTypeID: google.maps.MapTypeId.ROADMAP
+      MapTypeID: google.maps.MapTypeId.ROADMAP,
+      disableDefaultUI: true
     };
 
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
