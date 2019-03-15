@@ -87,8 +87,8 @@ export class BerjalanPage {
 
   detail(id:any, subject:any){
     console.log(id)
-    let nav = this.app.getRootNav();
-    nav.push(DetailBerjalanPage, {
+    //let nav = this.app.getRootNav();
+    this.navCtrl.push(DetailBerjalanPage, {
     id : id,
     subject : subject
     });

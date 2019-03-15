@@ -51,7 +51,7 @@ export class TabsPage {
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad TabsPage');
-  
+    this.getRating();
   }
   getRating(){
     this.authService.getData('api/provider/get_rating/' + this.userDetails['id'], this.userDetails['access_token']).then((result)=>{

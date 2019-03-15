@@ -51,8 +51,13 @@ export class IkutiPage {
         console.log(this.responseData);
         if (this.responseData["success"] == true) {
           this.loading.dismiss();
-          this.navCtrl.setRoot(TabsPage, {
-          });
+          this.viewCtrl.dismiss({bidding : 1});
+         /*  this.app.getRootNav().setRoot(TabsPage, {
+            bidding : 1
+          }); */
+         /*  this.navCtrl.setRoot(TabsPage, {
+            bidding : '1'
+          }); */
         }else if(this.responseData["message"] == "double"){
           this.loading.dismiss()
           this.presentToast("Anda sudah mengikuti project ini!!");

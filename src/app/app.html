@@ -2,8 +2,8 @@
   <ion-content>
       <div id="menu">
           <img src="assets/imgs/menu.png" class="logo"/>
-          <div *ngIf="rate"class="ratings-value">{{rate}}</div>
-          <div *ngIf="!rate" class="ratings-value">0.0</div>
+          <div *ngIf="rate" class="ratings-value">{{rate}}</div>
+          <div *ngIf="!rate || null" class="ratings-value">0.0</div>
           <div class="ratings">  
             <rating [(ngModel)]="rate" 
             readOnly="true"

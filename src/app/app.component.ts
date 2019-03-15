@@ -27,6 +27,7 @@ export class HiberDroners {
   constructor(private autostart: Autostart, private alertCtrl: AlertController, public fcm: FCM,public platform: Platform, public events: Events,  public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
     this.userDetails = JSON.parse(localStorage.getItem('userProvider'));
+
     if(this.userDetails){
     this.emails = this.userDetails.email;
     }
