@@ -45,8 +45,8 @@ export class TawaranPage {
 
   detail(id:any, subject:any){
     console.log(id)
-    let nav = this.app.getRootNav();
-    nav.push(DetailTawaranPage, {
+    //let nav = this.app.getRootNav();
+    this.navCtrl.push(DetailTawaranPage, {
     id : id,
     subject : subject
     });

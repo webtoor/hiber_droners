@@ -50,7 +50,9 @@ import { Autostart } from '@ionic-native/autostart';
   ],
   imports: [
     BrowserModule,HttpModule,
-    IonicModule.forRoot(HiberDroners),
+    IonicModule.forRoot(HiberDroners, {
+      tabsHideOnSubPages: true,
+    }),
     Ionic2RatingModule
   ],
   bootstrap: [IonicApp],

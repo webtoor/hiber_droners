@@ -40,8 +40,6 @@ export class TabsPage {
   ionViewDidEnter() {
     if(!localStorage.getItem('userProvider')){
       this.navCtrl.setRoot(LoginPage);
-    }else{
-      this.getRating();
     }  
     if(this.bidding == '1'){
       this.tabRef.select(1);

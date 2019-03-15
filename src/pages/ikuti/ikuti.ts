@@ -52,7 +52,6 @@ export class IkutiPage {
         if (this.responseData["success"] == true) {
           this.loading.dismiss();
           this.navCtrl.setRoot(TabsPage, {
-            bidding : 1,
           });
         }else if(this.responseData["message"] == "double"){
           this.loading.dismiss()

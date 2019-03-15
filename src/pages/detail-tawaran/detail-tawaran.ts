@@ -51,7 +51,8 @@ export class DetailTawaranPage {
     let mapOptions = {
       center:LatLng,
       zoom:17,
-      MapTypeID: google.maps.MapTypeId.ROADMAP
+      MapTypeID: google.maps.MapTypeId.ROADMAP,
+      disableDefaultUI: false
     };
 
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
