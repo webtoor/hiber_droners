@@ -119,7 +119,7 @@ export class DetailBerjalanPage {
 
   sendEmail(order_id:any){
     this.showLoader()
-    console.log(order_id)
+    //console.log(order_id)
     this.dataEmail.order_id = order_id;
     this.dataEmail.email = this.userDetails['email'];
     console.log(this.dataEmail);
@@ -143,7 +143,7 @@ export class DetailBerjalanPage {
       else{
       }
     }, (err) => {
-  
+      return null;
     });
   }
   }

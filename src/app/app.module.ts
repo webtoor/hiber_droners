@@ -19,6 +19,7 @@ import { FilterPage } from '../pages/filter/filter';
 
 import { Ionic2RatingModule } from 'ionic2-rating';
 
+import { HttpClientModule } from '@angular/common/http';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -49,9 +50,9 @@ import { Autostart } from '@ionic-native/autostart';
     FilterPage,
   ],
   imports: [
-    BrowserModule,HttpModule,
+    BrowserModule,HttpModule,HttpClientModule,
     IonicModule.forRoot(HiberDroners, {
-      tabsHideOnSubPages: true,
+      tabsHideOnSubPages: false,
     }),
     Ionic2RatingModule
   ],

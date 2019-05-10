@@ -20,6 +20,8 @@ export class BerjalanPage {
   public userDetails : any;
   public responseData: any;
   public items : any;
+  public itemx : any;
+
   loading:any;
   public theState:boolean = false;
   constructor(public app: App ,public loadingCtrl: LoadingController,public authService: RestApiProvider, public navCtrl: NavController, public navParams: NavParams) {
@@ -73,7 +75,7 @@ export class BerjalanPage {
       this.responseData = result;
       console.log(this.responseData['data']);
       if(this.responseData['success'] == true){
-        this.items = this.responseData['data'];
+        this.itemx = this.responseData['data'];
         this.loading.dismiss()
       }else{
         this.loading.dismiss()
@@ -87,11 +89,16 @@ export class BerjalanPage {
 
   detail(id:any, subject:any){
     console.log(id)
-    //let nav = this.app.getRootNav();
+    /* //let nav = this.app.getRootNav();
     this.navCtrl.push(DetailBerjalanPage, {
     id : id,
     subject : subject
-    });
+    }); */
+    let nav = this.app.getRootNav();
+    nav.push(DetailBerjalanPage, {
+      id : id,
+      subject : subject
+      });
   }
 
   backToWelcome(){

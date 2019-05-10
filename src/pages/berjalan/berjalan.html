@@ -61,8 +61,8 @@
   </div>
   
   <div *ngIf="theState == true">
-      <div *ngIf="items != 0; else kosongs" >
-        <div *ngFor="let item of items">
+      <div *ngIf="itemx != 0; else kosongs" >
+        <div *ngFor="let item of itemx">
         <ion-card >
         <ion-card-content>
        <div style="font-weight:bold; margin-bottom:20px;" >{{item.order.subject}}</div>
@@ -73,7 +73,7 @@
         <div *ngIf="item.order.projecttype == 4">Konstruksi Bangunan</div>
         <div *ngIf="item.order.projecttype == 5">Pengawasan</div>
         <div>Tanggal Proyek : {{item.order.dtprojectstart | date: "dd MMM yyyy" }} - {{item.order.dtprojectend | date: "dd MMM yyyy" }}</div>
-        <div>Harga Penawaran IDR : {{item.proposal_by.offered_price  | currency:"Rp." :true:"1.0"}}</div>
+        <div>Harga Penawaran IDR : {{item.order_proposal_by.offered_price  | currency:"Rp." :true:"1.0"}}</div>
   
         <ion-grid>
           <ion-row style="margin-left: -15px; margin-right: -15px">

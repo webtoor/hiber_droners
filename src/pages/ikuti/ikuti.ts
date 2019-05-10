@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { ViewController, NavController, NavParams, LoadingController, App, ToastController } from 'ionic-angular';
 import { RestApiProvider } from '../../providers/rest-api/rest-api';
 import { LoginPage } from '../login/login';
-import { TabsPage } from '../tabs/tabs';
 
 /**
  * Generated class for the IkutiPage page.
@@ -58,7 +57,7 @@ export class IkutiPage {
          /*  this.navCtrl.setRoot(TabsPage, {
             bidding : '1'
           }); */
-        }else if(this.responseData["message"] == "double"){
+        }else if((this.responseData["success"] == "true") && (this.responseData["message"] == "double")){
           this.loading.dismiss()
           this.presentToast("Anda sudah mengikuti project ini!!");
         }

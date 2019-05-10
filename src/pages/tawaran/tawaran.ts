@@ -88,10 +88,12 @@ export class TawaranPage {
   ikutiModal(id:any, subject:any) {
     let modal = this.modalCtrl.create(IkutiPage, { order_id: id, subject:subject }, {cssClass: 'select-modal' });
     modal.onDidDismiss(data => {
-      if(data['bidding'] == 1){
+      if(data){
+        if(data.bidding == 1){
         this.app.getRootNav().setRoot(TabsPage, {
           bidding : 1
         });
+       }
       }
       //this.navCtrl.push(TabsPage);
     })
