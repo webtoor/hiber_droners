@@ -4,6 +4,8 @@ import { RestApiProvider } from '../../providers/rest-api/rest-api';
 import { LoginPage } from '../login/login';
 import { DetailTawaranPage } from '../detail-tawaran/detail-tawaran';
 import { IkutiPage } from '../ikuti/ikuti';
+import { FilterPage } from '../filter/filter';
+import { TabsPage } from '../tabs/tabs';
 
 
 /**
@@ -23,15 +25,17 @@ export class TawaranPage {
   public responseData: any;
   public items : any;
   loading:any;
+  filter:any;
   constructor(public modalCtrl: ModalController, public loadingCtrl: LoadingController, public app: App, public navCtrl: NavController, public navParams: NavParams, public authService: RestApiProvider) {
     const data = JSON.parse(localStorage.getItem('userProvider'));
     this.userDetails = data;
     console.log(this.userDetails)
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     console.log('ionViewDidLoad TawaranPage');
     if(localStorage.getItem('userProvider')){
+      this.filter = '0';
       this.getTawaran();
     }else if(!localStorage.getItem('userProvider')){
       this.navCtrl.setRoot(LoginPage);
@@ -42,8 +46,8 @@ export class TawaranPage {
 
   detail(id:any, subject:any){
     console.log(id)
-    let nav = this.app.getRootNav();
-    nav.push(DetailTawaranPage, {
+    //let nav = this.app.getRootNav();
+    this.navCtrl.push(DetailTawaranPage, {
     id : id,
     subject : subject
     });
@@ -51,7 +55,7 @@ export class TawaranPage {
 
   getTawaran(){
     this.showLoader()
-    this.authService.getData('api/provider/tawaran_show', this.userDetails['access_token']).then((result)=>{
+    this.authService.getData('api/provider/tawaran_show/' + this.userDetails['id'] + '/' + this.filter, this.userDetails['access_token']).then((result)=>{
       this.responseData = result;
       console.log(this.responseData);
       if(this.responseData['success'] == true){
@@ -84,8 +88,38 @@ export class TawaranPage {
   ikutiModal(id:any, subject:any) {
     let modal = this.modalCtrl.create(IkutiPage, { order_id: id, subject:subject }, {cssClass: 'select-modal' });
     modal.onDidDismiss(data => {
-    
+      if(data){
+        if(data.bidding == 1){
+        this.app.getRootNav().setRoot(TabsPage, {
+          bidding : 1
+        });
+       }
+      }
+      //this.navCtrl.push(TabsPage);
     })
     modal.present();
+  }
+
+  filterSort(){
+    console.log('filter');
+    let modal = this.modalCtrl.create(FilterPage, { provider_id:this.userDetails['id'] }, {cssClass: 'select-modal' });
+    modal.onDidDismiss(data => {
+      if(data){
+        this.filter = data['kode'];
+        this.getTawaran();
+        console.log(this.filter)
+      }
+
+    })
+    modal.present();
+  }
+
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.getTawaran();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
   }
 }

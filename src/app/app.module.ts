@@ -15,13 +15,20 @@ import { LoginPage } from '../pages/login/login';
 import { DetailTawaranPage } from '../pages/detail-tawaran/detail-tawaran';
 import { IkutiPage } from '../pages/ikuti/ikuti';
 import { DetailBerjalanPage } from '../pages/detail-berjalan/detail-berjalan';
+import { FilterPage } from '../pages/filter/filter';
+
 import { Ionic2RatingModule } from 'ionic2-rating';
 
+import { HttpClientModule } from '@angular/common/http';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { RestApiProvider } from '../providers/rest-api/rest-api';
 import { HttpModule } from "@angular/http";
+/* import { Push } from '@ionic-native/push'; */
+import { FCM } from '@ionic-native/fcm';
+import { Autostart } from '@ionic-native/autostart';
+
 
 
 @NgModule({
@@ -39,11 +46,14 @@ import { HttpModule } from "@angular/http";
     ListPage,
     DetailTawaranPage,
     IkutiPage,
-    DetailBerjalanPage
+    DetailBerjalanPage,
+    FilterPage,
   ],
   imports: [
-    BrowserModule,HttpModule,
-    IonicModule.forRoot(HiberDroners),
+    BrowserModule,HttpModule,HttpClientModule,
+    IonicModule.forRoot(HiberDroners, {
+      tabsHideOnSubPages: false,
+    }),
     Ionic2RatingModule
   ],
   bootstrap: [IonicApp],
@@ -61,13 +71,17 @@ import { HttpModule } from "@angular/http";
     ListPage,
     DetailTawaranPage,
     IkutiPage,
-    DetailBerjalanPage
+    DetailBerjalanPage,
+    FilterPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    RestApiProvider
-  ]
+    RestApiProvider,
+    FCM,
+    Autostart
+    /* Push */
+   ]
 })
 export class AppModule {}

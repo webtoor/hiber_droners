@@ -1,5 +1,5 @@
 import { Component, ViewChild, ElementRef } from '@angular/core';
-import { NavController, NavParams, LoadingController, App } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, App, AlertController } from 'ionic-angular';
 import { RestApiProvider } from '../../providers/rest-api/rest-api';
 import { LoginPage } from '../login/login';
 
@@ -25,8 +25,10 @@ export class DetailBerjalanPage {
   order_id:any;
   map:any;
   outputs:any;
+  area : any;
+  dataEmail = {"order_id" : "", "email" : ""};
   @ViewChild('map') mapElement: ElementRef;
-  constructor(public authService: RestApiProvider, public loadingCtrl: LoadingController, public app: App,public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private alertCtrl: AlertController, public authService: RestApiProvider, public loadingCtrl: LoadingController, public app: App,public navCtrl: NavController, public navParams: NavParams) {
     this.subject= navParams.get('subject');
     this.order_id= navParams.get('id');
     const data = JSON.parse(localStorage.getItem('userProvider'));
@@ -51,7 +53,8 @@ export class DetailBerjalanPage {
     let mapOptions = {
       center:LatLng,
       zoom:17,
-      MapTypeID: google.maps.MapTypeId.ROADMAP
+      MapTypeID: google.maps.MapTypeId.ROADMAP,
+      disableDefaultUI: false
     };
 
     this.map = new google.maps.Map(this.mapElement.nativeElement, mapOptions);
@@ -62,7 +65,7 @@ export class DetailBerjalanPage {
         cords.push(new google.maps.LatLng(parseFloat(this.responseData['polygon'][i]['latitude']), parseFloat(this.responseData['polygon'][i]['longitude'])));
       }
       //console.log(cords)
-        new google.maps.Polygon({
+        var polygons = new google.maps.Polygon({
            paths: cords,
            map: this.map,
            strokeColor: '#000',
@@ -87,6 +90,9 @@ export class DetailBerjalanPage {
           }
          }
          console.log(this.outputs)
+         var luasArea = google.maps.geometry.spherical.computeArea(polygons.getPath());
+         this.area = luasArea.toFixed(2)
+         console.log(this.area)
         this.loading.dismiss()
       }else{
         this.loading.dismiss()
@@ -111,5 +117,34 @@ export class DetailBerjalanPage {
     this.loading.present();
   }
 
+  sendEmail(order_id:any){
+    this.showLoader()
+    //console.log(order_id)
+    this.dataEmail.order_id = order_id;
+    this.dataEmail.email = this.userDetails['email'];
+    console.log(this.dataEmail);
+    this.authService.postData(this.dataEmail, "api/provider/send_email", this.userDetails['access_token']).then((result) => {
+      this.responseData = result;
+      console.log(this.responseData);
+      if (this.responseData["success"] == true) {
+        console.log("benar")
+        this.loading.dismiss()
+        let alert = this.alertCtrl.create({
+          title: "Export KML",
+          subTitle: "Silahkan cek email Anda",
+          buttons: [
+            {
+              text: 'OK',
+            }
+          ]
+        });
+        alert.present();
+      }
+      else{
+      }
+    }, (err) => {
+      return null;
+    });
+  }
+  }
 
-}

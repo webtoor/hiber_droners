@@ -1,15 +1,18 @@
 import { Component, ViewChild } from '@angular/core';
-import { Nav, Platform, Events } from 'ionic-angular';
+import { Nav, Platform, Events, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TabsPage } from '../pages/tabs/tabs';
-
+/* import { Push, PushObject, PushOptions } from '@ionic-native/push';
+ */
 import { AkunPage } from '../pages/akun/akun';
 import { HubungiPage } from '../pages/hubungi/hubungi';
 import { BantuanPage } from '../pages/bantuan/bantuan';
+import { FCM } from '@ionic-native/fcm';
+import { Autostart } from '@ionic-native/autostart';
 
 
-
+declare var FCMPlugin: any;
 @Component({
   templateUrl: 'app.html'
 })
@@ -21,9 +24,10 @@ export class HiberDroners {
   emails :any;
   pages: Array<{title: string, icon:any, component: any}>;
   rate :string;
-  constructor(public platform: Platform, public events: Events,  public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(private autostart: Autostart, private alertCtrl: AlertController, public fcm: FCM,public platform: Platform, public events: Events,  public statusBar: StatusBar, public splashScreen: SplashScreen) {
     this.initializeApp();
     this.userDetails = JSON.parse(localStorage.getItem('userProvider'));
+
     if(this.userDetails){
     this.emails = this.userDetails.email;
     }
@@ -54,14 +58,87 @@ export class HiberDroners {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
+      this.autostart.enable(); 
+      this.pushSetup();
       setTimeout(() => {
-        this.splashScreen.hide();
+       this.splashScreen.hide();
         }, 100);
         this.statusBar.backgroundColorByHexString('#2A2C43');
         this.statusBar.styleBlackTranslucent();
       
     });
   }
+
+  pushSetup(){
+    if(this.platform.is('cordova')){    
+    this.fcm.onNotification().subscribe(data => {
+      if(data.wasTapped){
+        console.log("Received in background");
+        if(data.action == 'tawaran'){
+          this.nav.setRoot(TabsPage);
+        }
+        if(data.action == 'bekerja'){
+          this.nav.setRoot(TabsPage, {
+            bekerja : 1,
+          });
+        }
+      } else {
+        console.log("Received in foreground");
+        if(data.action == 'tawaran'){
+          let alert = this.alertCtrl.create({
+            title: data.title,
+            subTitle: data.body,
+            buttons: [
+              {
+                text: 'LIHAT',
+                handler: () => {
+                  this.nav.setRoot(TabsPage);
+                }
+              }
+            ]
+          });
+          alert.present();
+        }
+        if(data.action == 'bekerja'){
+          let alert = this.alertCtrl.create({
+            title: data.title,
+            subTitle: data.body,
+            buttons: [
+              {
+                text: 'LIHAT',
+                handler: () => {
+                  this.nav.setRoot(TabsPage, {
+                    bekerja : 1,
+                  });
+                }
+              }
+            ]
+          });
+          alert.present();
+        }
+      
+      };
+    });
+  }
+  }
+  /* pushSetup(){
+    const options: PushOptions = {
+      android: {
+        senderID : '20786705039'
+      },
+      ios: {
+          alert: 'true',
+          badge: true,
+          sound: 'false'
+      },
+      windows: {},
+   };
+   
+   const pushObject: PushObject = this.push.init(options);
+   
+   
+   pushObject.on('notification').subscribe((notification: any) => console.log('Received a notification', notification));
+  } */
 
   openPage(page) {
     // Reset the content nav to have just this page

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ViewController, NavController, NavParams, LoadingController, App, ToastController } from 'ionic-angular';
 import { RestApiProvider } from '../../providers/rest-api/rest-api';
 import { LoginPage } from '../login/login';
+
 /**
  * Generated class for the IkutiPage page.
  *
@@ -22,7 +23,6 @@ export class IkutiPage {
   public responseData: any;
   public items : any;
   loading:any
-
   constructor(private toastCtrl: ToastController, public loadingCtrl: LoadingController, public app: App,public authService: RestApiProvider, public viewCtrl: ViewController,public navCtrl: NavController, public navParams: NavParams) {
     this.subject= navParams.get('subject');
     this.order_id= navParams.get('order_id');
@@ -44,17 +44,26 @@ export class IkutiPage {
     this.dataBidding.order_id = order_id;
     this.dataBidding.proposal_by = this.userDetails['id']
     console.log(this.dataBidding)
-    if (this.dataBidding.comment && this.dataBidding.offered_price) {
+    if (this.dataBidding.offered_price) {
       this.authService.postData(this.dataBidding, "api/provider/bidding",  this.userDetails['access_token']).then((result) => {
         this.responseData = result;
         console.log(this.responseData);
         if (this.responseData["success"] == true) {
           this.loading.dismiss();
-          //this.navCtrl.setRoot(TabsPage);
+          this.viewCtrl.dismiss({bidding : 1});
+         /*  this.app.getRootNav().setRoot(TabsPage, {
+            bidding : 1
+          }); */
+         /*  this.navCtrl.setRoot(TabsPage, {
+            bidding : '1'
+          }); */
+        }else if((this.responseData["success"] == "true") && (this.responseData["message"] == "double")){
+          this.loading.dismiss()
+          this.presentToast("Anda sudah mengikuti project ini!!");
         }
         else{
         this.loading.dismiss()
-        //localStorage.clear();
+        localStorage.clear();
         setTimeout(()=> this.backToWelcome(), 1000);  
         }
       }, (err) => {

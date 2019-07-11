@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, App  } from 'ionic-angular';
 import { RestApiProvider } from '../../providers/rest-api/rest-api';
 import { LoginPage } from '../login/login';
-import { ThrowStmt } from '@angular/compiler';
 
 /**
  * Generated class for the PerformaPage page.
@@ -26,7 +25,7 @@ export class PerformaPage {
     this.userDetails = data;
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
     console.log('ionViewDidLoad PerformaPage');
     this.getOrderFeedback();
   }
@@ -61,6 +60,15 @@ export class PerformaPage {
     }, (err) => {
       this.loading.dismiss()
     });
+  }
+
+  doRefresh(refresher) {
+    console.log('Begin async operation', refresher);
+    this.getOrderFeedback();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
   }
 
 }
