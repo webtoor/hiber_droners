@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, App } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, App, AlertController } from 'ionic-angular';
 import { RestApiProvider } from '../../providers/rest-api/rest-api';
 import { LoginPage } from '../login/login';
 import { DetailBerjalanPage } from '../detail-berjalan/detail-berjalan';
@@ -21,10 +21,11 @@ export class BerjalanPage {
   public responseData: any;
   public items : any;
   public itemx : any;
+  cancels :any =  { "id" : ""}
 
   loading:any;
   public theState:boolean = false;
-  constructor(public app: App ,public loadingCtrl: LoadingController,public authService: RestApiProvider, public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public alertCtrl : AlertController, public app: App ,public loadingCtrl: LoadingController,public authService: RestApiProvider, public navCtrl: NavController, public navParams: NavParams) {
     const data = JSON.parse(localStorage.getItem('userProvider'));
     this.userDetails = data;
   }
@@ -113,5 +114,38 @@ export class BerjalanPage {
     });
 
     this.loading.present();
+  }
+
+  Cancels(id:any, subject : any){
+    this.cancels.id = id;
+    console.log(this.cancels)
+    let confirm = this.alertCtrl.create({
+      title: 'Konfirmasi',
+      message: 'Apakah anda yakin untuk membatalkan ' + subject + '?',
+      buttons: [
+        {
+          text: 'Oke',
+          handler: () => {
+              this.authService.postData(this.cancels, "api/provider/cancel_bid", this.userDetails['access_token']).then((result) => {
+              this.responseData = result;
+              console.log(this.responseData);
+              if(this.responseData['success'] == true){
+               this.getBerjalanIkuti();
+              }else{
+                 localStorage.clear();
+                setTimeout(()=> this.backToWelcome(), 1000);  
+              }
+            });  
+          }
+        },
+        {
+          text: 'Kembali',
+          handler: () => {
+            console.log('Kembali clicked');
+          }
+        }
+      ]
+    });
+    confirm.present();
   }
 }
