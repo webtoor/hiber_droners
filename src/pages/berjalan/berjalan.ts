@@ -121,7 +121,7 @@ export class BerjalanPage {
     console.log(this.cancels)
     let confirm = this.alertCtrl.create({
       title: 'Konfirmasi',
-      message: 'Apakah anda yakin untuk membatalkan ' + subject + '?',
+      message: 'Apakah anda yakin untuk berhenti mengikuti' + subject + '?',
       buttons: [
         {
           text: 'Oke',
